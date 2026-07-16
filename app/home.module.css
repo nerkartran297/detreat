@@ -903,3 +903,160 @@ div.step:hover {
   border-color: var(--gold);
   color: var(--gold);
 }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1024px) {
+  .heroContent {
+    padding: 0 32px 72px;
+  }
+
+  .catSection,
+  .prodSection,
+  .processSection,
+  .storySection,
+  .testiSection {
+    padding: 100px 32px;
+  }
+
+  .projSection {
+    padding: 100px 0;
+  }
+
+  .projHeadWrap,
+  .mosaic {
+    padding: 0 32px;
+  }
+
+  .mosaic {
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: 280px 280px;
+    grid-auto-rows: 280px;
+  }
+
+  .storyGrid {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .storyFigure {
+    position: static;
+    max-width: 420px;
+  }
+
+  /* background-attachment: fixed is broken on iOS Safari */
+  .ctaBg {
+    background-attachment: scroll;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroContent {
+    padding-bottom: 48px;
+  }
+
+  .heroCtas {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .figures {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaSection {
+    padding: 120px 32px;
+  }
+
+  .ctaBtns {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .mosaic {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-rows: 240px;
+  }
+
+  .tileTall {
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .heroContent {
+    padding: 0 20px 48px;
+  }
+
+  .heroCtas {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .marqueeItem {
+    font-size: 13px;
+  }
+
+  .catSection,
+  .prodSection,
+  .processSection,
+  .storySection,
+  .testiSection {
+    padding: 72px 20px;
+  }
+
+  .projSection {
+    padding: 72px 0;
+  }
+
+  .projHeadWrap,
+  .mosaic {
+    padding: 0 20px;
+  }
+
+  .catCard {
+    padding: 32px 24px 40px;
+  }
+
+  .catImgWrap {
+    height: 260px;
+  }
+
+  .prodCard {
+    padding: 28px 24px 32px;
+  }
+
+  .step {
+    padding: 26px 20px 24px;
+  }
+
+  .figImg {
+    height: 280px;
+  }
+
+  .quote {
+    padding: 24px 20px;
+  }
+
+  .statsGrid {
+    gap: 12px;
+  }
+
+  .stat {
+    padding: 24px 12px;
+  }
+
+  .ctaSection {
+    padding: 120px 20px;
+  }
+
+  .ctaBtns {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+}
