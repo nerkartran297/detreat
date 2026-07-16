@@ -222,6 +222,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: background 0.4s;
+  border-radius: var(--radius-pill);
 }
 
 .submitBtn:hover {
@@ -327,6 +328,7 @@
 .gearWrap {
   margin-top: 44px;
   overflow: hidden;
+  border-radius: var(--radius-lg);
 }
 
 .gearImg {

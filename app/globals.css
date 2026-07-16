@@ -20,6 +20,10 @@
   --serif: var(--font-prata), "Prata", serif;
   --sans: var(--font-archivo), "Archivo", sans-serif;
   --body-font: var(--font-manrope), "Manrope", sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
 }
 
 html {
@@ -196,6 +200,7 @@ button {
   transition: background 0.4s;
   display: inline-block;
   cursor: pointer;
+  border-radius: var(--radius-pill);
 }
 
 .dt-btn-solid:hover {
@@ -214,6 +219,7 @@ button {
   transition: border-color 0.4s;
   display: inline-block;
   cursor: pointer;
+  border-radius: var(--radius-pill);
 }
 
 .dt-btn-outline:hover {

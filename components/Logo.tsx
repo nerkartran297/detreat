@@ -52,6 +52,7 @@ export default function Logo({
               background: "var(--gold)",
               transformOrigin: "bottom",
               animationDelay: DELAYS[i],
+              borderRadius: 1.5,
             }}
           />
         ))}

@@ -60,6 +60,7 @@
   cursor: pointer;
   text-transform: uppercase;
   transition: all 0.4s;
+  border-radius: var(--radius-pill);
 }
 
 .langBtn:hover {
@@ -72,6 +73,7 @@
   color: var(--gold);
   padding: 10px 24px;
   transition: all 0.4s;
+  border-radius: var(--radius-pill);
 }
 
 .ctaBtn:hover {
@@ -183,6 +185,7 @@
   flex: 1;
   text-align: center;
   padding: 14px 24px;
+  border-radius: var(--radius-pill);
 }
 
 /* ---------- Footer (home, 3-column) ---------- */
@@ -232,6 +235,7 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 500;
+  border-radius: var(--radius-pill);
 }
 
 .footerZalo:hover {
@@ -247,6 +251,7 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 500;
+  border-radius: var(--radius-pill);
 }
 
 .footerCall:hover {
@@ -312,6 +317,7 @@
   transform: translateY(10px);
   transition: opacity 0.45s var(--ease), transform 0.45s var(--ease),
     border-color 0.3s, color 0.3s;
+  border-radius: 50%;
 }
 
 .backToTopVisible {
