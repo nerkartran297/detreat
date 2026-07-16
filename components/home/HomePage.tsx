@@ -143,7 +143,7 @@ export default function HomePage() {
           </div>
           <div className={`dt-reveal ${styles.prodGrid}`}>
             {t.products.map((p, i) => (
-              <a key={p.href} href={p.href} className={styles.prodCard}>
+              <Link key={p.href} href={p.href} className={styles.prodCard}>
                 <div className={styles.prodTop}>
                   <span className={styles.prodChip}>{p.cat}</span>
                   <span className={styles.prodNrc}>NRC {p.nrc}</span>
@@ -162,7 +162,7 @@ export default function HomePage() {
                   <span className={styles.prodPrice}>{t.priceOnRequest}</span>
                   <span className={styles.prodDetails}>{t.details}</span>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

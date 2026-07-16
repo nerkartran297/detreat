@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Prata&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #0a0a0b; color: #f2eee6; font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #f2eee6; text-decoration: none; }
+  a:hover { color: #c9a96a; }
+  ::selection { background: #c9a96a; color: #0a0a0b; }
+  @keyframes dt-eq { from { transform: scaleY(.3); } to { transform: scaleY(1); } }
+  @keyframes dt-fadeUp { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: translateY(0); } }
+  .dt-logo .dt-bar { animation: dt-eq .8s ease-in-out infinite alternate; animation-play-state: paused; }
+  .dt-logo:hover .dt-bar { animation-play-state: running; }
+  .dt-nav { position: relative; padding-bottom: 4px; transition: color .35s; }
+  .dt-nav::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: #c9a96a; transform: scaleX(0); transform-origin: left; transition: transform .45s cubic-bezier(.22,1,.36,1); }
+  .dt-nav:hover::after { transform: scaleX(1); }
+  .dt-reveal { opacity: 0; transform: translateY(36px); transition: opacity 1.1s cubic-bezier(.22,1,.36,1), transform 1.1s cubic-bezier(.22,1,.36,1); }
+  .dt-reveal.dt-in { opacity: 1; transform: translateY(0); }
+  .dt-prod { animation: dt-fadeUp .8s cubic-bezier(.22,1,.36,1) both; }
+  .dt-prod .dt-prod-img { transition: transform .9s cubic-bezier(.22,1,.36,1); }
+  .dt-prod:hover .dt-prod-img { transform: translateY(-8px) scale(1.06); }
+</style>
+</helmet>
+
+<nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: linear-gradient(rgba(10,10,11,.92), rgba(10,10,11,0)); backdrop-filter: blur(2px)">
+  <a href="De-treat Luxury.dc.html" class="dt-logo" style="display: flex; align-items: center; gap: 14px">
+    <span style="display: flex; align-items: flex-end; gap: 3px; height: 28px">
+      <span class="dt-bar" style="width: 3px; height: 12px; background: #c9a96a; transform-origin: bottom; animation-delay: -.1s"></span>
+      <span class="dt-bar" style="width: 3px; height: 22px; background: #c9a96a; transform-origin: bottom; animation-delay: -.35s"></span>
+      <span class="dt-bar" style="width: 3px; height: 28px; background: #c9a96a; transform-origin: bottom; animation-delay: -.6s"></span>
+      <span class="dt-bar" style="width: 3px; height: 18px; background: #c9a96a; transform-origin: bottom; animation-delay: -.2s"></span>
+      <span class="dt-bar" style="width: 3px; height: 25px; background: #c9a96a; transform-origin: bottom; animation-delay: -.5s"></span>
+    </span>
+    <span style="display: flex; flex-direction: column; line-height: 1.15">
+      <span style="font-family: 'Prata', serif; font-size: 21px; font-weight: 400; letter-spacing: .1em">DE-TREAT</span>
+      <span style="font-size: 8.5px; letter-spacing: .4em; color: #c9a96a; text-transform: uppercase; font-weight: 500">Your sound solution</span>
+    </span>
+  </a>
+  <div style="display: flex; align-items: center; gap: clamp(16px, 2.4vw, 34px); font-family: 'Archivo', sans-serif; font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; font-weight: 500">
+    <a href="San Pham.dc.html" class="dt-nav" style="color: #c9a96a" style-hover="color: #c9a96a">{{ t.navProducts }}</a>
+    <a href="Du An.dc.html" class="dt-nav" style="color: #cfc9bd" style-hover="color: #f2eee6">{{ t.navProjects }}</a>
+    <a href="De-treat Luxury.dc.html#quy-trinh" class="dt-nav" style="color: #cfc9bd" style-hover="color: #f2eee6">{{ t.navProcess }}</a>
+    <a href="Lien He.dc.html" class="dt-nav" style="color: #cfc9bd" style-hover="color: #f2eee6">{{ t.navContact }}</a>
+    <button onClick="{{ toggleLang }}" style="background: none; border: 1px solid rgba(242,238,230,.25); color: #cfc9bd; padding: 9px 16px; font-family: 'Archivo', sans-serif; font-size: 11px; letter-spacing: .18em; cursor: pointer; text-transform: uppercase; transition: all .4s" style-hover="border-color: #c9a96a; color: #c9a96a">{{ otherLangLabel }}</button>
+    <a href="https://zalo.me/0914593334" style="border: 1px solid #c9a96a; color: #c9a96a; padding: 10px 24px; transition: all .4s" style-hover="background: #c9a96a; color: #0a0a0b">{{ t.navCta }}</a>
+  </div>
+</nav>
+
+<section style="padding: 150px 48px 0; max-width: 1400px; margin: 0 auto; box-sizing: border-box">
+  <div style="display: flex; align-items: center; gap: 12px; font-family: 'Archivo', sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; animation: dt-fadeUp .9s .1s cubic-bezier(.22,1,.36,1) both">
+    <a href="San Pham.dc.html" style="color: #8d867a" style-hover="color: #c9a96a">{{ t.navProducts }}</a>
+    <span style="color: #57524a">/</span>
+    <a href="{{ catHref }}" style="color: #8d867a" style-hover="color: #c9a96a">{{ p.cat }}</a>
+    <span style="color: #57524a">/</span>
+    <span style="color: #c9a96a">{{ p.shortName }}</span>
+  </div>
+</section>
+
+<section style="padding: 48px 48px 110px; max-width: 1400px; margin: 0 auto; box-sizing: border-box">
+  <div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 96px; align-items: start">
+    <div style="position: sticky; top: 120px; animation: dt-fadeUp 1.1s .2s cubic-bezier(.22,1,.36,1) both">
+      <div style="border: 1px solid rgba(242,238,230,.1); background: radial-gradient(ellipse at 50% 42%, #1a1a17 0%, #0e0e0d 58%, #0a0a0b 100%); display: flex; align-items: center; justify-content: center; height: 560px; position: relative; overflow: hidden">
+        <img src="{{ p.img }}" alt="{{ p.name }}" style="max-height: 78%; max-width: 74%; object-fit: contain; filter: drop-shadow(0 44px 56px rgba(0,0,0,.65)); transition: transform 1.2s cubic-bezier(.22,1,.36,1)" style-hover="transform: scale(1.04)">
+        <span style="position: absolute; top: 24px; left: 24px; font-family: 'Archivo', sans-serif; font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: #c9a96a; border: 1px solid rgba(201,169,106,.35); padding: 7px 15px; font-weight: 500">{{ p.cat }}</span>
+        <span style="position: absolute; bottom: 24px; right: 24px; font-family: 'Prata', serif; font-size: 17px; color: #8d867a">NRC {{ p.nrc }}</span>
+      </div>
+      <p style="font-size: 11.5px; font-weight: 300; color: #6f695e; margin: 14px 0 0; letter-spacing: .04em">{{ t.imgNote }}</p>
+    </div>
+    <div>
+      <h1 style="font-family: 'Prata', serif; font-weight: 400; font-size: clamp(32px, 3.2vw, 46px); line-height: 1.15; margin: 0; text-wrap: balance; animation: dt-fadeUp 1.1s .3s cubic-bezier(.22,1,.36,1) both">{{ p.name }}</h1>
+      <p style="font-size: 15.5px; font-weight: 300; line-height: 1.8; color: #b8b1a4; margin: 20px 0 0; animation: dt-fadeUp 1.1s .45s cubic-bezier(.22,1,.36,1) both">{{ p.desc }}</p>
+      <div style="display: flex; align-items: baseline; gap: 16px; margin-top: 32px; padding: 24px 0; border-top: 1px solid rgba(242,238,230,.1); border-bottom: 1px solid rgba(242,238,230,.1); animation: dt-fadeUp 1.1s .55s cubic-bezier(.22,1,.36,1) both">
+        <span style="font-family: 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: #6f695e; font-weight: 500">{{ t.price }}</span>
+        <span style="font-family: 'Prata', serif; font-size: 26px; color: #c9a96a">{{ t.priceValue }}</span>
+      </div>
+      <div style="margin-top: 32px; animation: dt-fadeUp 1.1s .65s cubic-bezier(.22,1,.36,1) both">
+        <span style="font-family: 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: #8d867a; font-weight: 500">{{ t.finish }}</span>
+        <div style="display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap">
+          <sc-for list="{{ colors }}" as="c" hint-placeholder-count="3">
+            <button onClick="{{ c.pick }}" style="background: {{ c.bg }}; border: 1px solid {{ c.border }}; color: {{ c.color }}; padding: 11px 22px; font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 400; cursor: pointer; transition: all .35s" style-hover="border-color: #c9a96a; color: #c9a96a">{{ c.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display: flex; gap: 16px; margin-top: 40px; animation: dt-fadeUp 1.1s .75s cubic-bezier(.22,1,.36,1) both">
+        <a href="{{ zaloHref }}" style="flex: 1; text-align: center; background: #c9a96a; color: #0a0a0b; padding: 18px 32px; font-family: 'Archivo', sans-serif; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; transition: background .4s" style-hover="background: #e0c48a; color: #0a0a0b">{{ t.askZalo }}</a>
+        <a href="tel:+84914593334" style="border: 1px solid rgba(242,238,230,.3); padding: 18px 32px; font-family: 'Archivo', sans-serif; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; font-weight: 500; transition: border-color .4s" style-hover="border-color: #c9a96a; color: #c9a96a">{{ t.call }}</a>
+      </div>
+      <div style="margin-top: 56px; animation: dt-fadeUp 1.1s .85s cubic-bezier(.22,1,.36,1) both">
+        <h2 style="font-family: 'Prata', serif; font-weight: 400; font-size: 22px; margin: 0 0 4px">{{ t.specs }}</h2>
+        <div style="display: flex; flex-direction: column; margin-top: 16px">
+          <sc-for list="{{ specs }}" as="s" hint-placeholder-count="8">
+            <div style="display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 14px 0; border-top: 1px solid rgba(242,238,230,.08)">
+              <span style="font-family: 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; color: #8d867a; font-weight: 500; padding-top: 2px">{{ s.k }}</span>
+              <span style="font-size: 14px; font-weight: 300; color: #ded8cc; line-height: 1.6">{{ s.v }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="margin-top: 40px">
+        <span style="font-family: 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: #8d867a; font-weight: 500">{{ t.fitFor }}</span>
+        <div style="display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap">
+          <sc-for list="{{ p.fit }}" as="f" hint-placeholder-count="3">
+            <span style="border: 1px solid rgba(242,238,230,.14); color: #b8b1a4; padding: 9px 18px; font-size: 13px; font-weight: 300">{{ f }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="border-top: 1px solid rgba(242,238,230,.08); background: #0e0e10; padding: 110px 48px">
+  <div style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 110px; align-items: start">
+    <div class="dt-reveal">
+      <div style="display: flex; align-items: center; gap: 16px">
+        <span style="display: block; width: 40px; height: 1px; background: #c9a96a"></span>
+        <span style="font-family: 'Archivo', sans-serif; font-size: 11px; letter-spacing: .42em; text-transform: uppercase; color: #c9a96a; font-weight: 500">{{ t.aboutEyebrow }}</span>
+      </div>
+      <h2 style="font-family: 'Prata', serif; font-weight: 400; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.18; margin: 18px 0 0">{{ t.aboutTitle }}</h2>
+    </div>
+    <div class="dt-reveal">
+      <div style="display: flex; flex-direction: column; gap: 22px; font-size: 15px; font-weight: 300; line-height: 1.9; color: #b8b1a4">
+        <p style="margin: 0">{{ p.para1 }}</p>
+        <p style="margin: 0">{{ p.para2 }}</p>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(242,238,230,.1); border: 1px solid rgba(242,238,230,.1); margin-top: 44px">
+        <sc-for list="{{ highlights }}" as="h" hint-placeholder-count="4">
+          <div style="background: #0e0e10; padding: 26px 26px 28px; display: flex; flex-direction: column; gap: 12px">
+            <span style="font-family: 'Prata', serif; font-size: 15px; color: #c9a96a">{{ h.num }}</span>
+            <span style="font-size: 13.5px; font-weight: 300; line-height: 1.7; color: #ded8cc">{{ h.text }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="border-top: 1px solid rgba(242,238,230,.08); padding: 110px 48px 130px">
+  <div style="max-width: 1400px; margin: 0 auto">
+    <div class="dt-reveal" style="display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap">
+      <div>
+        <div style="display: flex; align-items: center; gap: 16px">
+          <span style="display: block; width: 40px; height: 1px; background: #c9a96a"></span>
+          <span style="font-family: 'Archivo', sans-serif; font-size: 11px; letter-spacing: .42em; text-transform: uppercase; color: #c9a96a; font-weight: 500">{{ p.cat }}</span>
+        </div>
+        <h2 style="font-family: 'Prata', serif; font-weight: 400; font-size: clamp(30px, 3.2vw, 46px); margin: 18px 0 0">{{ t.relatedTitle }}</h2>
+      </div>
+      <a href="{{ catHref }}" style="font-family: 'Archivo', sans-serif; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: #c9a96a; border-bottom: 1px solid rgba(201,169,106,.4); padding-bottom: 6px; font-weight: 500">{{ t.relatedAll }}</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 64px" class="dt-reveal">
+      <sc-for list="{{ related }}" as="r" hint-placeholder-count="3">
+        <a href="{{ r.href }}" class="dt-prod" style="display: flex; flex-direction: column; border: 1px solid rgba(242,238,230,.1); background: linear-gradient(160deg, #131315, #0a0a0b); padding: 30px 28px 32px; transition: border-color .5s, transform .5s, box-shadow .6s; animation-delay: {{ r.delay }}" style-hover="border-color: rgba(201,169,106,.55); transform: translateY(-6px); box-shadow: 0 0 32px rgba(201,169,106,.14)">
+          <div style="display: flex; justify-content: space-between; align-items: center">
+            <span style="font-family: 'Archivo', sans-serif; font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: #c9a96a; border: 1px solid rgba(201,169,106,.35); padding: 6px 14px; font-weight: 500">{{ r.cat }}</span>
+            <span style="font-family: 'Archivo', sans-serif; font-size: 12px; color: #8d867a; letter-spacing: .08em">NRC {{ r.nrc }}</span>
+          </div>
+          <div style="display: flex; justify-content: center; align-items: center; height: 190px; margin: 22px 0 6px">
+            <img class="dt-prod-img" src="{{ r.img }}" alt="{{ r.name }}" loading="lazy" style="max-height: 100%; max-width: 78%; object-fit: contain; filter: drop-shadow(0 22px 28px rgba(0,0,0,.6))">
+          </div>
+          <h3 style="font-family: 'Prata', serif; font-weight: 400; font-size: 19px; line-height: 1.35; margin: 12px 0 10px">{{ r.name }}</h3>
+          <p style="font-size: 13px; font-weight: 300; line-height: 1.7; color: #9b9487; margin: 0; flex: 1">{{ r.desc }}</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 26px; border-top: 1px solid rgba(242,238,230,.1); padding-top: 16px">
+            <span style="font-size: 12px; color: #b8b1a4">{{ t.priceValue }}</span>
+            <span style="font-family: 'Archivo', sans-serif; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: #c9a96a; font-weight: 500">{{ t.details }}</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<footer style="border-top: 1px solid rgba(242,238,230,.08); padding: 64px 48px 44px; background: #0a0a0b">
+  <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap">
+    <a href="De-treat Luxury.dc.html" class="dt-logo" style="display: flex; align-items: center; gap: 12px">
+      <span style="display: flex; align-items: flex-end; gap: 3px; height: 22px">
+        <span class="dt-bar" style="width: 3px; height: 10px; background: #c9a96a; transform-origin: bottom; animation-delay: -.1s"></span>
+        <span class="dt-bar" style="width: 3px; height: 17px; background: #c9a96a; transform-origin: bottom; animation-delay: -.35s"></span>
+        <span class="dt-bar" style="width: 3px; height: 22px; background: #c9a96a; transform-origin: bottom; animation-delay: -.6s"></span>
+        <span class="dt-bar" style="width: 3px; height: 14px; background: #c9a96a; transform-origin: bottom; animation-delay: -.2s"></span>
+        <span class="dt-bar" style="width: 3px; height: 20px; background: #c9a96a; transform-origin: bottom; animation-delay: -.5s"></span>
+      </span>
+      <span style="font-family: 'Prata', serif; font-size: 18px; letter-spacing: .1em">DE-TREAT</span>
+    </a>
+    <div style="display: flex; gap: 28px; font-size: 13px; font-weight: 300; color: #b8b1a4">
+      <a href="San Pham.dc.html">{{ t.navProducts }}</a>
+      <a href="Du An.dc.html">{{ t.navProjects }}</a>
+      <a href="Lien He.dc.html">{{ t.navContact }}</a>
+    </div>
+    <span style="font-size: 12px; color: #6f695e">© 2026 De-treat — Nguyễn Thành Linh</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: (typeof localStorage !== 'undefined' && localStorage.getItem('dt-lang')) || 'en', slug: 'tan-am-slat-wood', color: 0 };
+  componentDidMount() {
+    try {
+      const sp = new URLSearchParams(window.location.search).get('sp');
+      if (sp) this.setState({ slug: sp });
+    } catch (e) {}
+    this._io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) { e.target.classList.add('dt-in'); this._io.unobserve(e.target); }
+      }
+    }, { threshold: 0.08 });
+    const observe = () => {
+      document.querySelectorAll('.dt-reveal:not(.dt-in)').forEach((el) => this._io.observe(el));
+    };
+    observe();
+    this._observe = observe;
+    // re-render can swap nodes after mount; catch stragglers
+    this._reTimer = setInterval(observe, 800);
+  }
+  componentDidUpdate() { if (this._observe) requestAnimationFrame(() => this._observe()); }
+  componentWillUnmount() { if (this._io) this._io.disconnect(); if (this._reTimer) clearInterval(this._reTimer); }
+  renderVals() {
+    const lang = this.state.lang;
+    const IMG = { 'tieu-am': 'uploads/TieuAm.png', 'tan-am': 'uploads/TanAm.png', 'bass-trap': 'uploads/BassTrap.png', 'ceiling-cloud': 'uploads/Ceiling.png' };
+    // spec keys order: dims, thickness, material, nrc, range, weight, fire, install
+    const D = {
+      'bass-trap-corner-tri': { key: 'bass-trap', nrc: '1.05', dims: '100 × 30 × 30 cm', th: '300 mm', wt: '6.2 kg', install: { en: 'Corner stacking / wall brackets', vi: 'Xếp chồng góc / ke tường' },
+        mat: { en: '80 kg/m³ rockwool core, timber frame, acoustic fabric', vi: 'Rockwool 80 kg/m³, khung gỗ, bọc nỉ acoustic' },
+        range: { en: '60 – 500 Hz', vi: '60 – 500 Hz' }, colors: { en: ['Charcoal', 'Cream', 'Black'], vi: ['Xám than', 'Kem', 'Đen'] },
+        fit: { en: ['Home studio', 'Mixing room', 'Hi-Fi room'], vi: ['Home studio', 'Phòng mix', 'Phòng nghe Hi-Fi'] },
+        para1: { en: 'Corner Tri stacks vertically into room corners — where low-frequency pressure builds up most. The 80 kg/m³ rockwool core is dense enough to convert boomy corner energy into heat, tightening the bass without touching the mids.', vi: 'Corner Tri xếp chồng theo phương đứng vào góc phòng — nơi áp suất tần thấp dồn ứ nhiều nhất. Lõi rockwool 80 kg/m³ đủ đặc để chuyển năng lượng bass bùng ở góc thành nhiệt, siết lại tiếng bass mà không chạm vào dải trung.' },
+        para2: { en: 'A column of four units covers a standard 2.4m corner. Most rooms treat the two front corners first, then add rear corners if modal ringing persists in measurements.', vi: 'Một cột bốn khối phủ đủ góc phòng 2.4m tiêu chuẩn. Đa số phòng xử lý hai góc trước trước tiên, sau đó thêm góc sau nếu phép đo vẫn thấy ringing do mode phòng.' },
+        hl: { en: ['Dense 80 kg/m³ core tuned for 60–500 Hz', 'Stacks to full room height, no tools', 'Tri profile hugs the corner pressure zone', 'Fabric finish matches wall panels'], vi: ['Lõi 80 kg/m³ tối ưu dải 60–500 Hz', 'Xếp chồng kín chiều cao phòng, không cần dụng cụ', 'Khối tam giác ôm đúng vùng áp suất góc', 'Bọc nỉ đồng bộ với panel tường'] } },
+      'ceiling-cloud-rect-120': { key: 'ceiling-cloud', nrc: '1.00', dims: '120 × 60 × 8 cm', th: '80 mm', wt: '5.8 kg', install: { en: 'Cable suspension / turnbuckles', vi: 'Hệ dây cáp treo / tăng đơ' },
+        mat: { en: '60 kg/m³ rockwool, timber frame, acoustic fabric', vi: 'Bông khoáng rockwool 60 kg/m³, khung gỗ, bọc nỉ acoustic' },
+        range: { en: '200 – 4000 Hz', vi: '200 – 4000 Hz' }, colors: { en: ['Charcoal', 'Cream', 'Black', 'Navy'], vi: ['Xám than', 'Kem', 'Đen', 'Xanh navy'] },
+        fit: { en: ['Above the mix position', 'Recording studio', 'Meeting room'], vi: ['Trần trên bàn mix', 'Phòng thu', 'Phòng họp'] },
+        para1: { en: 'Cloud Rect 120 hangs parallel below the ceiling, right above the listening position, to absorb the ceiling reflection — the early reflection path most rooms forget, which smears imaging. The 80mm, 60 kg/m³ core reaches NRC ~1.0; more importantly, the air gap behind the panel extends absorption into the low-mids, far beyond what flush mounting achieves.', vi: 'Cloud Rect 120 treo song song dưới trần, ngay phía trên vị trí ngồi, để hấp thụ phản xạ trần — đường phản xạ sớm thường bị bỏ quên nhưng làm âm hình mờ và đục. Lõi rockwool 60 kg/m³ dày 80 mm cho NRC ~1.0; quan trọng hơn, khoảng không khí giữa tấm và trần kéo dài hiệu quả hấp thụ xuống dải trung – thấp, tốt hơn nhiều so với ốp sát trần.' },
+        para2: { en: 'The cable system with turnbuckles lets you set both height and tilt, aligning the panel to the exact reflection angle toward the ear. A clear upgrade for rooms that treated the walls but still hear energy "overhead".', vi: 'Hệ dây cáp kèm tăng đơ cho phép chỉnh cao độ và độ nghiêng tấm, căn đúng góc phản xạ tới tai. Đây là bước nâng cấp rõ rệt cho phòng đã xử lý tường nhưng vẫn thấy tiếng "ở trên đầu".' },
+        hl: { en: ['Air gap extends absorption into low-mids', '60 kg/m³ rockwool, NRC ~1.0', 'Turnbuckle cables adjust height and tilt', 'Opens the ceiling, sharpens imaging'], vi: ['Treo cách trần — khoang khí kéo dài dải hấp thụ', 'Rockwool 60 kg/m³, NRC ~1.0, dứt phản xạ trần', 'Dây cáp tăng đơ chỉnh cao độ và độ nghiêng', 'Mở trần phòng, làm âm hình rõ và gọn hơn'] } },
+      'tan-am-qrd-skyline': { key: 'tan-am', nrc: '0.20', dims: '60 × 60 × 12 cm', th: '120 mm', wt: '4.8 kg', install: { en: 'Wall mount / adhesive', vi: 'Treo tường / dán nền' },
+        mat: { en: 'Solid pine blocks, prime-root sequence, matte finish', vi: 'Khối gỗ thông nguyên khối, chuỗi số học primitive-root, phủ mờ' },
+        range: { en: '800 – 6000 Hz (2D scattering)', vi: '800 – 6000 Hz (tán xạ 2 chiều)' }, colors: { en: ['Natural pine', 'Walnut', 'Matte black'], vi: ['Thông tự nhiên', 'Óc chó', 'Đen mờ'] },
+        fit: { en: ['Listening room', 'Control room rear wall', 'Live room'], vi: ['Phòng nghe', 'Tường sau phòng mix', 'Phòng thu live'] },
+        para1: { en: 'Skyline QRD scatters sound in two dimensions using a mathematically derived grid of pine columns. Instead of killing reflections, it breaks them into a diffuse field — the room keeps its life and air, but flutter and harsh specular reflections disappear.', vi: 'Skyline QRD phân tán âm theo hai chiều bằng lưới cột gỗ thông tính theo chuỗi toán học. Thay vì triệt phản xạ, nó bẻ phản xạ thành trường âm khuếch tán — phòng giữ được độ sống và "không khí", nhưng flutter echo và phản xạ gắt biến mất.' },
+        para2: { en: 'Typical placement is the rear wall of a control room or the wall behind the listening position, at ear height. Combine with absorption at first reflection points for a balanced room.', vi: 'Vị trí điển hình là tường sau phòng mix hoặc mảng tường sau vị trí ngồi nghe, ngang tầm tai. Kết hợp với tiêu âm tại điểm phản xạ đầu để phòng cân bằng.' },
+        hl: { en: ['True 2D scattering from prime-sequence grid', 'Solid pine — no veneer, ages beautifully', 'Keeps the room alive, kills flutter', 'Modular 60cm tiles form large arrays'], vi: ['Tán xạ 2 chiều thật từ lưới chuỗi số nguyên tố', 'Gỗ thông nguyên khối — không veneer, càng dùng càng đẹp', 'Giữ phòng sống động, dứt flutter echo', 'Module 60cm ghép được mảng lớn'] } },
+      'bass-trap-column-round': { key: 'bass-trap', nrc: '0.95', dims: 'Ø40 × 120 cm', th: 'Ø400 mm', wt: '7.5 kg', install: { en: 'Freestanding / corner placement', vi: 'Đặt sàn tự đứng / kê góc' },
+        mat: { en: '60 kg/m³ rockwool cylinder, fabric sleeve, timber caps', vi: 'Trụ rockwool 60 kg/m³, vỏ nỉ, nắp gỗ hai đầu' },
+        range: { en: '80 – 800 Hz (omnidirectional)', vi: '80 – 800 Hz (hút đa hướng)' }, colors: { en: ['Charcoal', 'Cream', 'Black'], vi: ['Xám than', 'Kem', 'Đen'] },
+        fit: { en: ['Home studio', 'Vocal booth', 'Flexible rooms'], vi: ['Home studio', 'Booth thu âm', 'Phòng đa dụng'] },
+        para1: { en: 'Column Round absorbs bass omnidirectionally — the full cylinder surface works, so each unit does more than a flat panel of the same footprint. Being freestanding, it moves with you: behind the speakers today, in the corners tomorrow.', vi: 'Column Round hút bass đa hướng — toàn bộ bề mặt trụ đều làm việc, nên mỗi trụ hiệu quả hơn tấm phẳng cùng diện tích chiếm chỗ. Vì tự đứng, nó di chuyển linh hoạt: hôm nay sau loa, mai kê góc phòng.' },
+        para2: { en: 'Producers who rent or rearrange often prefer columns over fixed corner traps — zero drilling, and the room can be re-tuned in minutes.', vi: 'Producer thuê nhà hoặc hay đổi layout thường chuộng trụ hơn trap góc cố định — không khoan tường, và phòng có thể tinh chỉnh lại trong vài phút.' },
+        hl: { en: ['Omnidirectional absorption, full surface', 'Freestanding — zero installation', 'Moves and re-tunes the room in minutes', 'Timber caps double as plant stands'], vi: ['Hút đa hướng, toàn bộ bề mặt làm việc', 'Tự đứng — không cần thi công', 'Di chuyển, tinh chỉnh phòng trong vài phút', 'Nắp gỗ có thể đặt chậu cây trang trí'] } },
+      'ceiling-cloud-hexa': { key: 'ceiling-cloud', nrc: '0.90', dims: '60 × 52 × 5 cm', th: '50 mm', wt: '2.4 kg', install: { en: 'Cable suspension, honeycomb layout', vi: 'Dây cáp treo, ghép tổ ong' },
+        mat: { en: '50mm PET acoustic core, fabric wrap', vi: 'Lõi PET acoustic 50mm, bọc nỉ' },
+        range: { en: '300 – 4000 Hz', vi: '300 – 4000 Hz' }, colors: { en: ['Charcoal', 'Cream', 'Navy', 'Terracotta'], vi: ['Xám than', 'Kem', 'Xanh navy', 'Đất nung'] },
+        fit: { en: ['Office', 'Cafe / restaurant', 'Podcast room'], vi: ['Văn phòng', 'Cafe / nhà hàng', 'Phòng podcast'] },
+        para1: { en: 'Cloud Hexa turns ceiling treatment into a design feature: hexagonal tiles cluster into honeycomb fields that absorb speech-band reflections while giving the ceiling a deliberate, architectural look.', vi: 'Cloud Hexa biến xử lý trần thành điểm nhấn thiết kế: các tấm lục giác ghép thành mảng tổ ong hấp thụ phản xạ dải giọng nói, đồng thời cho trần một diện mạo kiến trúc có chủ đích.' },
+        para2: { en: 'Popular in commercial spaces where reverberation control must not look industrial. Mix colors across the honeycomb for a branded ceiling.', vi: 'Được ưa chuộng ở không gian thương mại, nơi việc kiểm soát vang không được trông "công nghiệp". Phối màu trong mảng tổ ong để tạo trần mang dấu ấn thương hiệu.' },
+        hl: { en: ['Honeycomb clusters — ceiling as design', 'Lightweight PET, 2.4 kg per tile', 'Four colors, mixable per array', 'Speech-band tuned for busy spaces'], vi: ['Ghép tổ ong — trần thành thiết kế', 'PET nhẹ, 2.4 kg mỗi tấm', 'Bốn màu, phối tự do trong mảng', 'Tối ưu dải giọng nói cho không gian đông người'] } },
+      'tan-am-qrd-well-7': { key: 'tan-am', nrc: '0.25', dims: '120 × 60 × 15 cm', th: '150 mm', wt: '8.2 kg', install: { en: 'Wall mount, ear height', vi: 'Treo tường, ngang tầm tai' },
+        mat: { en: 'MDF wells, veneer finish, sealed back', vi: 'Giếng MDF phủ veneer, lưng kín' },
+        range: { en: '600 – 5000 Hz (1D scattering)', vi: '600 – 5000 Hz (tán xạ 1 chiều)' }, colors: { en: ['Walnut', 'Natural oak', 'Matte black'], vi: ['Óc chó', 'Sồi tự nhiên', 'Đen mờ'] },
+        fit: { en: ['Control room', 'Listening room', 'Mastering room'], vi: ['Phòng mix', 'Phòng nghe', 'Phòng mastering'] },
+        para1: { en: 'QRD Well 7 is the classic quadratic-residue diffuser: seven wells of mathematically set depths spread reflections evenly across the horizontal plane — where your ears live.', vi: 'QRD Well 7 là diffuser quadratic-residue kinh điển: bảy giếng với độ sâu tính toán trải phản xạ đều theo phương ngang — đúng mặt phẳng đôi tai làm việc.' },
+        para2: { en: 'Mount a row at ear height on the rear wall for a wider, deeper soundstage without losing energy. Pairs well with bass trapping in the same wall\'s corners.', vi: 'Treo một hàng ngang tầm tai ở tường sau cho sân khấu âm thanh rộng và sâu hơn mà không mất năng lượng. Kết hợp tốt với trap bass ở hai góc cùng bức tường.' },
+        hl: { en: ['Classic QRD math, honest performance', 'Horizontal scattering at ear height', 'Veneer wells — furniture-grade finish', 'Wider soundstage, zero deadening'], vi: ['Toán QRD kinh điển, hiệu năng thật', 'Tán xạ ngang đúng tầm tai', 'Giếng veneer — hoàn thiện như nội thất', 'Sân khấu rộng hơn, không làm chết phòng'] } },
+      'tieu-am-panel-fabric-60': { key: 'tieu-am', nrc: '1.00', dims: '120 × 60 × 6 cm', th: '60 mm', wt: '4.2 kg', install: { en: 'Z-clips / adhesive / frame hang', vi: 'Z-clip / dán / khung treo' },
+        mat: { en: '60 kg/m³ rockwool, timber frame, acoustic fabric', vi: 'Rockwool 60 kg/m³, khung gỗ, bọc nỉ acoustic' },
+        range: { en: '250 – 4000 Hz', vi: '250 – 4000 Hz' }, colors: { en: ['Charcoal', 'Cream', 'Black', 'Navy'], vi: ['Xám than', 'Kem', 'Đen', 'Xanh navy'] },
+        fit: { en: ['First reflection points', 'Vocal recording', 'Podcast room'], vi: ['Điểm phản xạ đầu', 'Thu vocal', 'Phòng podcast'] },
+        para1: { en: 'Acoustic Panel 60 is the workhorse: a timber-framed rockwool panel wrapped in acoustic fabric, absorbing deeply across the mid and high bands. Placed at first reflection points, it removes the smear that makes rooms sound boxy.', vi: 'Acoustic Panel 60 là "ngựa thồ" của xử lý âm học: panel khung gỗ nhồi rockwool bọc nỉ, hấp thụ sâu dải trung – cao. Đặt tại điểm phản xạ đầu, nó loại bỏ tiếng nhòe khiến phòng nghe bị "đóng hộp".' },
+        para2: { en: 'The 60mm depth hits NRC ~1.0 where voices and instruments live. Most rooms start with six to eight panels at measured reflection points.', vi: 'Độ dày 60mm đạt NRC ~1.0 đúng dải giọng hát và nhạc cụ. Đa số phòng bắt đầu với 6–8 tấm tại các điểm phản xạ được đo đạc.' },
+        hl: { en: ['NRC ~1.0 across the vocal band', 'Timber frame keeps edges crisp for years', 'Four fabric colors, custom sizes', 'Three mounting systems included'], vi: ['NRC ~1.0 trọn dải giọng hát', 'Khung gỗ giữ cạnh phẳng đẹp nhiều năm', 'Bốn màu nỉ, nhận đặt kích thước riêng', 'Kèm ba phương án lắp đặt'] } },
+      'bass-trap-panel-superchunk': { key: 'bass-trap', nrc: '1.10', dims: '60 × 60 × 60 cm (tri)', th: '600 mm', wt: '11 kg', install: { en: 'Corner stacking, floor to ceiling', vi: 'Xếp chồng góc, sàn tới trần' },
+        mat: { en: 'Solid 100 kg/m³ rockwool, fabric face', vi: 'Rockwool đặc 100 kg/m³, mặt bọc nỉ' },
+        range: { en: '40 – 300 Hz', vi: '40 – 300 Hz' }, colors: { en: ['Charcoal', 'Black'], vi: ['Xám than', 'Đen'] },
+        fit: { en: ['Mastering room', 'Small control room', 'Bass-heavy genres'], vi: ['Phòng mastering', 'Phòng mix nhỏ', 'Thể loại nặng bass'] },
+        para1: { en: 'Superchunk is the deepest bass treatment we build: a solid triangular block of 100 kg/m³ rockwool filling the entire corner, floor to ceiling. Nothing absorbs below 100 Hz like sheer mass in the pressure zone.', vi: 'Superchunk là giải pháp bass sâu nhất chúng tôi sản xuất: khối tam giác rockwool đặc 100 kg/m³ lấp kín toàn bộ góc phòng từ sàn tới trần. Không gì hút dưới 100 Hz tốt bằng khối lượng đặt đúng vùng áp suất.' },
+        para2: { en: 'Small rooms with big monitors need this: modal decay at 50–80 Hz drops dramatically, and the mix position stops lying to you.', vi: 'Phòng nhỏ chơi loa lớn cần nó: thời gian dội của mode 50–80 Hz giảm mạnh, và vị trí mix không còn "nói dối" bạn nữa.' },
+        hl: { en: ['Solid 100 kg/m³ — deepest absorption', 'Works down to 40 Hz in corners', 'Floor-to-ceiling modular stacking', 'The fix for small-room bass'], vi: ['Khối đặc 100 kg/m³ — hút sâu nhất', 'Hiệu quả xuống tới 40 Hz ở góc', 'Xếp chồng module kín sàn tới trần', 'Lời giải cho bass phòng nhỏ'] } },
+      'ceiling-cloud-baffle': { key: 'ceiling-cloud', nrc: '0.95', dims: '120 × 40 × 5 cm', th: '50 mm', wt: '3.1 kg', install: { en: 'Vertical cable hang, rows', vi: 'Treo dọc bằng cáp, theo hàng' },
+        mat: { en: '50mm PET core, fabric wrap, both faces active', vi: 'Lõi PET 50mm, bọc nỉ, hai mặt đều làm việc' },
+        range: { en: '250 – 4000 Hz', vi: '250 – 4000 Hz' }, colors: { en: ['Charcoal', 'Cream', 'Navy'], vi: ['Xám than', 'Kem', 'Xanh navy'] },
+        fit: { en: ['High ceilings', 'Halls & lobbies', 'Open offices'], vi: ['Trần cao', 'Sảnh lớn', 'Văn phòng mở'] },
+        para1: { en: 'Cloud Baffle hangs vertically in rows below tall ceilings — both faces absorb, doubling effective area per panel. The rhythm of repeated baffles also gives big spaces a strong architectural line.', vi: 'Cloud Baffle treo dọc thành hàng dưới trần cao — hai mặt cùng hấp thụ, nhân đôi diện tích hiệu dụng mỗi tấm. Nhịp lặp của dãy baffle còn cho không gian lớn một đường nét kiến trúc mạnh.' },
+        para2: { en: 'The go-to for halls, lobbies and open offices where reverberation is measured in seconds, not milliseconds.', vi: 'Lựa chọn hàng đầu cho sảnh, lobby và văn phòng mở — nơi độ vang tính bằng giây chứ không phải mili-giây.' },
+        hl: { en: ['Double-sided absorption per panel', 'Rows create architectural rhythm', 'Lightweight — safe over large spans', 'Cuts long reverb in big volumes'], vi: ['Hấp thụ hai mặt trên mỗi tấm', 'Dãy baffle tạo nhịp kiến trúc', 'Nhẹ — an toàn cho khẩu độ lớn', 'Cắt vang dài ở không gian lớn'] } },
+      'tan-am-slat-wood': { key: 'tan-am', nrc: '0.40', dims: '120 × 60 × 2.1 cm', th: '21 mm', wt: '5.5 kg', install: { en: 'Hanging frame / adhesive backing', vi: 'Khung treo / dán nền' },
+        mat: { en: 'Veneered MDF slats on polyester acoustic felt', vi: 'Nan gỗ MDF phủ veneer trên nền nỉ polyester tiêu âm' },
+        range: { en: '500 – 4000 Hz (scattering + light absorption)', vi: '500 – 4000 Hz (tán xạ + hấp thụ nhẹ)' }, colors: { en: ['Walnut', 'Natural oak', 'Matte black'], vi: ['Óc chó', 'Sồi tự nhiên', 'Đen mờ'] },
+        fit: { en: ['Listening room', 'Hi-Fi living room', 'Commercial lobby'], vi: ['Phòng nghe nhạc', 'Phòng khách hi-fi', 'Sảnh thương mại'] },
+        para1: { en: 'Slat Wood is a hybrid: evenly spaced wood slats over a polyester acoustic felt base. The slat faces break up and scatter mid–high reflections, while the gaps let part of the wave through to the felt for absorption. The result is NRC ~0.4 — more than a pure diffuser, yet the room keeps its atmosphere. True to our principle: never deaden the room.', vi: 'Slat Wood là dòng "lai": các nan gỗ đặt cách đều trên nền nỉ polyester tiêu âm. Bề mặt nan bẻ và tán phản xạ tần trung – cao, trong khi khe hở giữa các nan cho một phần sóng âm lọt xuống lớp nỉ để hấp thụ. Kết quả là NRC ~0.4 — cao hơn diffuser thuần tuý nhưng vẫn giữ được không khí cho phòng, đúng tinh thần "không làm phòng chết".' },
+        para2: { en: 'It is the favorite for listening rooms that double as living rooms, where aesthetics matter as much as acoustics. A continuous slat field reads as premium interior wall cladding — few people ever realize it is acoustic treatment.', vi: 'Đây là giải pháp được ưa chuộng cho phòng nghe kết hợp phòng khách, nơi yêu cầu thẩm mỹ ngang ngửa yêu cầu kỹ thuật. Mảng nan gỗ liền mạch trông như một bức tường ốp nội thất cao cấp, ít ai nhận ra đó là vật liệu xử lý âm học.' },
+        hl: { en: ['Hybrid scattering + absorption, balanced NRC ~0.4', 'Real wood veneer slats — reads as interior cladding', 'Sold per m², covers large walls seamlessly', 'Keeps liveliness while cutting light flutter'], vi: ['Lai tán âm + tiêu âm, NRC ~0.4 cân bằng', 'Mặt nan veneer gỗ thật, đẹp như ốp nội thất', 'Tính theo m², dễ phủ mảng tường lớn liền mạch', 'Giữ độ sống động trong khi vẫn cắt dội nhẹ'] } },
+      'bass-trap-membrane-tuned': { key: 'bass-trap', nrc: '0.80', dims: '120 × 60 × 15 cm', th: '150 mm', wt: '9.6 kg', install: { en: 'Wall mount at pressure points', vi: 'Treo tường tại điểm áp suất' },
+        mat: { en: 'Tuned membrane over damped cavity, timber shell', vi: 'Màng cộng hưởng trên khoang tiêu âm, vỏ gỗ' },
+        range: { en: 'Tuned per room: 45 – 120 Hz', vi: 'Tinh chỉnh theo phòng: 45 – 120 Hz' }, colors: { en: ['Walnut', 'Matte black'], vi: ['Óc chó', 'Đen mờ'] },
+        fit: { en: ['Problem-frequency rooms', 'Mastering room', 'Finished rooms'], vi: ['Phòng có tần số lỗi', 'Phòng mastering', 'Phòng đã hoàn thiện'] },
+        para1: { en: 'Membrane Tuned is surgical: we measure your room, find the exact modal frequencies that ring, and build the membrane to resonate — and absorb — precisely there. Broadband treatment fixes the average; this fixes the peak.', vi: 'Membrane Tuned là giải pháp "phẫu thuật": chúng tôi đo phòng, tìm đúng tần số mode đang ringing, và chế màng cộng hưởng để hút chính xác tại đó. Xử lý dải rộng sửa mức trung bình; màng tinh chỉnh sửa đúng đỉnh lỗi.' },
+        para2: { en: 'Ideal for finished rooms where a stubborn 60 Hz boom survives conventional trapping — one tuned panel where the pressure peaks often beats four broadband ones.', vi: 'Lý tưởng cho phòng đã hoàn thiện nhưng còn tiếng ù 60 Hz cứng đầu sau khi đặt trap thường — một tấm tinh chỉnh đặt đúng điểm áp suất thường thắng bốn tấm dải rộng.' },
+        hl: { en: ['Tuned to your room\'s measured modes', 'Deep absorption from a slim 150mm panel', 'Timber shell — furniture appearance', 'Built after measurement, not before'], vi: ['Tinh chỉnh theo mode đo được của phòng bạn', 'Hút sâu từ tấm mỏng chỉ 150mm', 'Vỏ gỗ — ngoại hình như nội thất', 'Sản xuất sau khi đo, không đoán trước'] } },
+      'ceiling-cloud-wood-frame': { key: 'ceiling-cloud', nrc: '1.05', dims: '120 × 60 × 10 cm', th: '100 mm', wt: '8.4 kg', install: { en: 'Cable suspension / turnbuckles', vi: 'Dây cáp treo / tăng đơ' },
+        mat: { en: '60 kg/m³ rockwool, solid wood frame, acoustic fabric', vi: 'Rockwool 60 kg/m³, khung gỗ nguyên khối, bọc nỉ acoustic' },
+        range: { en: '150 – 4000 Hz', vi: '150 – 4000 Hz' }, colors: { en: ['Walnut / charcoal', 'Oak / cream', 'Black / black'], vi: ['Óc chó / xám than', 'Sồi / kem', 'Đen / đen'] },
+        fit: { en: ['Premium listening room', 'Studio live room', 'Executive spaces'], vi: ['Phòng nghe cao cấp', 'Phòng thu live', 'Không gian executive'] },
+        para1: { en: 'Cloud Wood Frame is the flagship cloud: a 100mm rockwool core wrapped in fabric, bordered by a solid wood frame that turns the ceiling treatment into a designed object. The deeper core plus air gap pushes absorption down to 150 Hz.', vi: 'Cloud Wood Frame là dòng cloud cao cấp nhất: lõi rockwool 100mm bọc nỉ, viền khung gỗ nguyên khối biến tấm xử lý trần thành một món đồ thiết kế. Lõi dày hơn cộng khoang khí kéo hấp thụ xuống tận 150 Hz.' },
+        para2: { en: 'Chosen for rooms where the ceiling is visible in every photo — premium listening rooms, live rooms, executive meeting spaces.', vi: 'Được chọn cho những căn phòng mà trần xuất hiện trong mọi bức ảnh — phòng nghe cao cấp, phòng thu live, phòng họp executive.' },
+        hl: { en: ['100mm core — absorbs down to 150 Hz', 'Solid wood frame, mitred corners', 'Two-tone wood + fabric combinations', 'Flagship finish for visible ceilings'], vi: ['Lõi 100mm — hút xuống tới 150 Hz', 'Khung gỗ nguyên khối, góc ghép mộng', 'Phối hai tông gỗ + nỉ tuỳ chọn', 'Hoàn thiện flagship cho trần lộ diện'] } },
+      'tan-am-poly-binary': { key: 'tan-am', nrc: '0.15', dims: '60 × 60 × 9 cm', th: '90 mm', wt: '1.9 kg', install: { en: 'Adhesive / magnet mount', vi: 'Dán keo / nam châm' },
+        mat: { en: 'Molded lightweight polymer, paintable surface', vi: 'Polymer nhẹ đúc khối, bề mặt sơn được' },
+        range: { en: '1000 – 8000 Hz (wide-band scattering)', vi: '1000 – 8000 Hz (tán xạ dải rộng)' }, colors: { en: ['White (paintable)', 'Charcoal', 'Gold accent'], vi: ['Trắng (sơn được)', 'Xám than', 'Nhấn vàng đồng'] },
+        fit: { en: ['Content studio', 'Streaming room', 'Accent walls'], vi: ['Studio content', 'Phòng streaming', 'Tường điểm nhấn'] },
+        para1: { en: 'Poly Binary scatters high-band reflections through a binary-sequence relief of polyhedral facets. At 1.9 kg it mounts anywhere — even with magnets — and the paintable surface lets it disappear into, or contrast with, any wall.', vi: 'Poly Binary tán xạ phản xạ dải cao qua bề mặt khối đa diện xếp theo chuỗi nhị phân. Chỉ 1.9 kg, nó gắn được mọi nơi — kể cả bằng nam châm — và bề mặt sơn được giúp nó hoà vào hoặc tương phản với bất kỳ bức tường nào.' },
+        para2: { en: 'A favorite backdrop for streaming and video studios: it reads beautifully on camera while taming the harshness of bare walls.', vi: 'Là backdrop được ưa chuộng cho studio quay video và streaming: lên hình rất đẹp trong khi vẫn khử độ gắt của tường trần.' },
+        hl: { en: ['Wide-band scattering, 1–8 kHz', 'Featherweight 1.9 kg — mounts anywhere', 'Paintable to match any interior', 'Camera-ready sculptural relief'], vi: ['Tán xạ dải rộng 1–8 kHz', 'Siêu nhẹ 1.9 kg — gắn mọi bề mặt', 'Sơn được theo mọi nội thất', 'Bề mặt điêu khắc đẹp trên camera'] } },
+      'tieu-am-pet-slim-40': { key: 'tieu-am', nrc: '0.80', dims: '120 × 60 × 4 cm', th: '40 mm', wt: '2.6 kg', install: { en: 'Adhesive / velcro', vi: 'Dán keo / velcro' },
+        mat: { en: '100% PET polyester fiber, dust-free, hypoallergenic', vi: 'Sợi polyester PET 100%, không bụi, không kích ứng' },
+        range: { en: '400 – 4000 Hz', vi: '400 – 4000 Hz' }, colors: { en: ['Charcoal', 'Cream', 'Navy', 'Terracotta'], vi: ['Xám than', 'Kem', 'Xanh navy', 'Đất nung'] },
+        fit: { en: ['Podcast room', 'Office / call room', 'Bedroom studio'], vi: ['Phòng podcast', 'Văn phòng / phòng họp', 'Studio phòng ngủ'] },
+        para1: { en: 'PET Slim 40 is absorption for rooms people live in: dust-free polyester fiber, no mineral wool, safe for enclosed and crowded spaces. At 40mm it stays visually slim while covering the full speech band.', vi: 'PET Slim 40 là tiêu âm cho không gian sinh hoạt: sợi polyester không bụi, không bông khoáng, an toàn cho phòng kín đông người. Chỉ dày 40mm, mỏng gọn về thị giác nhưng phủ trọn dải giọng nói.' },
+        para2: { en: 'Cut it on site with a utility knife — edges stay clean. The practical choice for podcast rooms, call rooms and bedroom studios.', vi: 'Cắt được tại chỗ bằng dao rọc giấy — cạnh vẫn sắc gọn. Lựa chọn thực dụng cho phòng podcast, phòng họp online và studio phòng ngủ.' },
+        hl: { en: ['Dust-free PET — safe for living spaces', 'Slim 40mm, full speech-band coverage', 'Cuts cleanly on site, DIY-friendly', 'Four colors for visible walls'], vi: ['PET không bụi — an toàn không gian sống', 'Mỏng 40mm, phủ trọn dải giọng nói', 'Cắt gọn tại chỗ, thân thiện DIY', 'Bốn màu cho tường lộ diện'] } }
+    };
+    const namesVi = { 'bass-trap-corner-tri': 'Corner Tri — Trap góc tam giác', 'ceiling-cloud-rect-120': 'Cloud Rect 120 — Ceiling Cloud chữ nhật', 'tan-am-qrd-skyline': 'Skyline QRD — Tán âm 2D', 'bass-trap-column-round': 'Column Round — Trap trụ tròn', 'ceiling-cloud-hexa': 'Cloud Hexa — Ceiling Cloud lục giác', 'tan-am-qrd-well-7': 'QRD Well 7 — Tán âm 1D dãy giếng', 'tieu-am-panel-fabric-60': 'Acoustic Panel 60 — Bọc nỉ khung gỗ', 'bass-trap-panel-superchunk': 'Superchunk — Trap góc đặc', 'ceiling-cloud-baffle': 'Cloud Baffle — Baffle treo trần dọc', 'tan-am-slat-wood': 'Slat Wood — Tán âm nan gỗ tích hợp tiêu âm', 'bass-trap-membrane-tuned': 'Membrane Tuned — Trap màng cộng hưởng', 'ceiling-cloud-wood-frame': 'Cloud Wood Frame — Ceiling Cloud viền gỗ', 'tan-am-poly-binary': 'Poly Binary — Tán âm khối poly đa diện', 'tieu-am-pet-slim-40': 'PET Slim 40 — Tiêu âm polyester' };
+    const namesEn = { 'bass-trap-corner-tri': 'Corner Tri — Triangular corner trap', 'ceiling-cloud-rect-120': 'Cloud Rect 120 — Rectangular ceiling cloud', 'tan-am-qrd-skyline': 'Skyline QRD — 2D diffuser', 'bass-trap-column-round': 'Column Round — Cylindrical bass trap', 'ceiling-cloud-hexa': 'Cloud Hexa — Hexagonal ceiling cloud', 'tan-am-qrd-well-7': 'QRD Well 7 — 1D well diffuser', 'tieu-am-panel-fabric-60': 'Acoustic Panel 60 — Fabric-wrapped absorber', 'bass-trap-panel-superchunk': 'Superchunk — Solid corner trap', 'ceiling-cloud-baffle': 'Cloud Baffle — Vertical ceiling baffle', 'tan-am-slat-wood': 'Slat Wood — Slatted wood diffuser with absorption', 'bass-trap-membrane-tuned': 'Membrane Tuned — Tuned membrane trap', 'ceiling-cloud-wood-frame': 'Cloud Wood Frame — Wood-framed ceiling cloud', 'tan-am-poly-binary': 'Poly Binary — Polyhedral diffuser', 'tieu-am-pet-slim-40': 'PET Slim 40 — Polyester absorber' };
+    const descsVi = { 'bass-trap-corner-tri': 'Trap góc nhồi rockwool 80kg/m³, siết tiếng bass bùng ở góc phòng.', 'ceiling-cloud-rect-120': 'Tấm treo trần nhồi rockwool, dứt phản xạ trần ngay trên đầu bàn mix.', 'tan-am-qrd-skyline': 'Diffuser skyline gỗ thông, phân tán âm 2 chiều giữ phòng sống động.', 'bass-trap-column-round': 'Trụ trap tròn 40cm, hút bass đa hướng, đặt linh hoạt mọi góc.', 'ceiling-cloud-hexa': 'Tấm treo trần lục giác ghép tổ ong, vừa tiêu âm vừa làm điểm nhấn trần.', 'tan-am-qrd-well-7': 'Tán âm QRD 1 chiều 7 giếng, trải phản xạ theo phương ngang chuẩn.', 'tieu-am-panel-fabric-60': 'Panel khung gỗ nhồi rockwool, bọc nỉ — hấp thụ sâu, thẩm mỹ studio.', 'bass-trap-panel-superchunk': 'Trap góc đặc nguyên khối rockwool 100kg/m³, xử lý bass cực sâu.', 'ceiling-cloud-baffle': 'Baffle treo dọc dưới trần, hấp thụ hai mặt cho không gian trần cao.', 'tan-am-slat-wood': 'Vách nan gỗ trên nền nỉ tiêu âm — vừa tán, vừa hút nhẹ, đẹp như nội thất.', 'bass-trap-membrane-tuned': 'Trap màng cộng hưởng tinh chỉnh đúng tần số mode phòng, xử lý chọn lọc.', 'ceiling-cloud-wood-frame': 'Cloud viền gỗ cao cấp, hấp thụ sâu cho phòng nghe và phòng thu đẹp.', 'tan-am-poly-binary': 'Diffuser khối đa diện trải phản xạ rộng dải, nhẹ và dễ treo.', 'tieu-am-pet-slim-40': 'Tấm polyester PET không bụi, mỏng gọn, an toàn cho phòng kín đông người.' };
+    const descsEn = { 'bass-trap-corner-tri': 'Corner trap filled with 80kg/m³ rockwool — tightens boomy bass in room corners.', 'ceiling-cloud-rect-120': 'Suspended rockwool panel that stops ceiling reflections above the mix position.', 'tan-am-qrd-skyline': 'Pine skyline diffuser scattering sound in two dimensions to keep the room alive.', 'bass-trap-column-round': '40cm cylindrical trap absorbing bass omnidirectionally — flexible placement.', 'ceiling-cloud-hexa': 'Honeycomb hexagonal ceiling tiles — absorption and a ceiling statement in one.', 'tan-am-qrd-well-7': '1D QRD diffuser with 7 wells, spreading reflections evenly across the horizontal plane.', 'tieu-am-panel-fabric-60': 'Timber-framed rockwool panel wrapped in fabric — deep absorption, studio aesthetics.', 'bass-trap-panel-superchunk': 'Solid 100kg/m³ rockwool corner chunk for the deepest bass control.', 'ceiling-cloud-baffle': 'Vertical baffles hung below the ceiling — double-sided absorption for tall rooms.', 'tan-am-slat-wood': 'Wood slats over an absorbent felt core — scatters and absorbs, looks like furniture.', 'bass-trap-membrane-tuned': 'Membrane trap tuned to your room’s exact mode frequencies — surgical treatment.', 'ceiling-cloud-wood-frame': 'Premium wood-framed cloud with deep absorption for beautiful rooms.', 'tan-am-poly-binary': 'Lightweight polyhedral diffuser spreading reflections across a wide band.', 'tieu-am-pet-slim-40': 'Dust-free PET polyester panel — slim, safe for crowded enclosed rooms.' };
+    const catVi = { 'tieu-am': 'Tiêu âm', 'tan-am': 'Tán âm', 'bass-trap': 'Trap', 'ceiling-cloud': 'Ceiling Cloud' };
+    const catEn = { 'tieu-am': 'Absorption', 'tan-am': 'Diffusion', 'bass-trap': 'Bass Trap', 'ceiling-cloud': 'Ceiling Cloud' };
+    const en = { navProducts: 'Products', navProjects: 'Projects', navProcess: 'Process', navContact: 'Contact', navCta: 'Message us',
+      imgNote: '* Illustration render — real product photos coming soon', price: 'Price', priceValue: 'On request', finish: 'Color / finish',
+      askZalo: 'Ask price on Zalo', call: 'Call 0914 593 334', specs: 'Specifications', fitFor: 'Best suited for',
+      aboutEyebrow: 'In depth', aboutTitle: 'How it works in your room.', relatedTitle: 'From the same family', relatedAll: 'View category →', details: 'Details →',
+      specKeys: ['Dimensions', 'Thickness', 'Materials', 'NRC', 'Treated range', 'Weight', 'Fire rating', 'Installation'], fire: 'B1 flame-retardant' };
+    const vi = { navProducts: 'Sản phẩm', navProjects: 'Dự án', navProcess: 'Quy trình', navContact: 'Liên hệ', navCta: 'Nhắn Zalo',
+      imgNote: '* Ảnh minh hoạ — ảnh sản phẩm thực tế cập nhật sau', price: 'Giá', priceValue: 'Liên hệ báo giá', finish: 'Màu / hoàn thiện',
+      askZalo: 'Hỏi giá qua Zalo', call: 'Gọi 0914 593 334', specs: 'Thông số kỹ thuật', fitFor: 'Phù hợp cho',
+      aboutEyebrow: 'Chuyên sâu', aboutTitle: 'Nó làm việc thế nào trong phòng bạn.', relatedTitle: 'Cùng nhóm sản phẩm', relatedAll: 'Xem cả nhóm →', details: 'Chi tiết →',
+      specKeys: ['Kích thước', 'Độ dày', 'Vật liệu', 'NRC', 'Dải tần xử lý', 'Trọng lượng', 'Chống cháy', 'Lắp đặt'], fire: 'Chống cháy lan B1' };
+    const t = lang === 'vi' ? vi : en;
+    const cats = lang === 'vi' ? catVi : catEn;
+    const names = lang === 'vi' ? namesVi : namesEn;
+    const descs = lang === 'vi' ? descsVi : descsEn;
+    const slug = D[this.state.slug] ? this.state.slug : 'tan-am-slat-wood';
+    const d = D[slug];
+    const L = (o) => o[lang === 'vi' ? 'vi' : 'en'];
+    const name = names[slug];
+    const p = {
+      cat: cats[d.key], name, shortName: name.split(' — ')[0], desc: descs[slug], nrc: d.nrc, img: IMG[d.key],
+      fit: L(d.fit), para1: L(d.para1), para2: L(d.para2)
+    };
+    const zaloText = lang === 'vi'
+      ? 'Chào De-treat, em quan tâm sản phẩm "' + name + '". Tư vấn giúp em với ạ.'
+      : 'Hello De-treat, I am interested in "' + name + '". Please advise.';
+    const colorSel = this.state.color;
+    const relatedSlugs = Object.keys(D).filter(s => D[s].key === d.key && s !== slug).slice(0, 3);
+    return {
+      t, p,
+      catHref: 'San Pham.dc.html?cat=' + d.key,
+      zaloHref: 'https://zalo.me/0914593334?text=' + encodeURIComponent(zaloText),
+      otherLangLabel: lang === 'vi' ? 'EN' : 'VI',
+      toggleLang: () => {
+        const next = lang === 'vi' ? 'en' : 'vi';
+        try { localStorage.setItem('dt-lang', next); } catch (e) {}
+        this.setState({ lang: next });
+      },
+      colors: L(d.colors).map((label, i) => ({
+        label,
+        bg: colorSel === i ? 'rgba(201,169,106,.12)' : 'transparent',
+        border: colorSel === i ? '#c9a96a' : 'rgba(242,238,230,.16)',
+        color: colorSel === i ? '#c9a96a' : '#b8b1a4',
+        pick: () => this.setState({ color: i })
+      })),
+      specs: [d.dims, d.th, L(d.mat), d.nrc, L(d.range), d.wt, t.fire, L(d.install)].map((v, i) => ({ k: t.specKeys[i], v })),
+      highlights: L(d.hl).map((text, i) => ({ num: '0' + (i + 1), text })),
+      related: relatedSlugs.map((s, i) => ({
+        href: 'Chi Tiet San Pham.dc.html?sp=' + s, cat: cats[D[s].key], nrc: D[s].nrc, img: IMG[D[s].key],
+        name: names[s], desc: descs[s], delay: (i * 0.08).toFixed(2) + 's'
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>

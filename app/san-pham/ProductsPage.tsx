@@ -118,7 +118,7 @@ export default function ProductsPage() {
       <section className={styles.gridSection}>
         <div className={styles.grid}>
           {shown.map((p, i) => (
-            <a
+            <Link
               key={`${filter}-${p.slug}`}
               href={p.href}
               className={styles.card}
@@ -143,7 +143,7 @@ export default function ProductsPage() {
                 <span className={styles.cardPrice}>{t.priceOnRequest}</span>
                 <span className={styles.cardDetails}>{t.details}</span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>

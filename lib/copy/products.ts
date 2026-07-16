@@ -30,7 +30,7 @@ const P = (key: ProductCategory, nrc: string, slug: string): Product => ({
   key,
   nrc,
   slug,
-  href: "https://detreat.com.vn/san-pham/" + slug + "/",
+  href: "/san-pham/" + slug,
   img: IMG[key],
 });
 
