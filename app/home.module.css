@@ -333,12 +333,32 @@
   letter-spacing: 0.08em;
 }
 
+.prodImgWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 240px;
+  margin: 24px 0 8px;
+}
+
+.prodImg {
+  max-height: 100%;
+  max-width: 82%;
+  object-fit: contain;
+  filter: drop-shadow(0 26px 32px rgba(0, 0, 0, 0.6));
+  transition: transform 0.9s var(--ease);
+}
+
+.prodCard:hover .prodImg {
+  transform: translateY(-8px) scale(1.06);
+}
+
 .prodName {
   font-family: var(--serif);
   font-weight: 400;
   font-size: 21px;
   line-height: 1.35;
-  margin: 56px 0 14px;
+  margin: 14px 0 14px;
 }
 
 .prodDesc {
@@ -1028,6 +1048,10 @@ div.step:hover {
 
   .prodCard {
     padding: 28px 24px 32px;
+  }
+
+  .prodImgWrap {
+    height: 200px;
   }
 
   .step {

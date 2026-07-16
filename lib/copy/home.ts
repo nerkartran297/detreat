@@ -470,6 +470,15 @@ export const CATEGORY_IMAGES = [
   "/assets/Ceiling.png",
 ] as const;
 
+/* Product renders for the Featured products cards, in the same order as
+ * HOME_COPY.*.products (Corner Tri / Cloud Rect 120 / Skyline QRD / Panel 60). */
+export const FEATURED_IMAGES = [
+  "/assets/BassTrap.png",
+  "/assets/Ceiling.png",
+  "/assets/TanAm.png",
+  "/assets/TieuAm.png",
+] as const;
+
 export const TEAM_IMG = "https://detreat.com.vn/_astro/team.3rA2OqYe_Z1d4awU.webp";
 export const GEAR_IMG = "https://detreat.com.vn/_astro/gear.C0djJ93a_nJ2f3.webp";
 export const FOUNDER_IMG =

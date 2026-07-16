@@ -10,6 +10,7 @@ import { ZALO_URL, TEL_URL } from "@/lib/chrome-copy";
 import {
   HOME_COPY,
   CATEGORY_IMAGES,
+  FEATURED_IMAGES,
   PROJECT_TILES,
   TEAM_IMG,
   GEAR_IMG,
@@ -141,11 +142,19 @@ export default function HomePage() {
             </Link>
           </div>
           <div className={`dt-reveal ${styles.prodGrid}`}>
-            {t.products.map((p) => (
+            {t.products.map((p, i) => (
               <a key={p.href} href={p.href} className={styles.prodCard}>
                 <div className={styles.prodTop}>
                   <span className={styles.prodChip}>{p.cat}</span>
                   <span className={styles.prodNrc}>NRC {p.nrc}</span>
+                </div>
+                <div className={styles.prodImgWrap}>
+                  <img
+                    src={FEATURED_IMAGES[i]}
+                    alt={p.name}
+                    loading="lazy"
+                    className={styles.prodImg}
+                  />
                 </div>
                 <h3 className={styles.prodName}>{p.name}</h3>
                 <p className={styles.prodDesc}>{p.desc}</p>
@@ -202,7 +211,11 @@ export default function HomePage() {
         <div className={`dt-reveal ${styles.figures}`}>
           <figure className={styles.figure}>
             <div className={styles.figWrap}>
-              <img src={TEAM_IMG} alt="On-site tuning" className={styles.figImg} />
+              <img
+                src={TEAM_IMG}
+                alt="On-site tuning"
+                className={styles.figImg}
+              />
             </div>
             <figcaption className={styles.figCaption}>{t.caption1}</figcaption>
           </figure>
