@@ -1,0 +1,554 @@
+/* Contact page — styles ported 1:1 from design_handoff "Lien He.dc.html" */
+
+/* Local copy of the shared dt-fadeUp keyframes (CSS-module scoping-safe). */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  padding: 210px 48px 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  animation: fadeUp 1.1s 0.2s var(--ease) both;
+}
+
+.eyebrowLine {
+  display: block;
+  width: 56px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.eyebrowLabel {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.headerRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--hairline-2);
+  padding-bottom: 64px;
+}
+
+.title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(48px, 6vw, 96px);
+  line-height: 1.04;
+  margin: 26px 0 0;
+  max-width: 14ch;
+  text-wrap: balance;
+  animation: fadeUp 1.1s 0.4s var(--ease) both;
+}
+
+.titleAccent {
+  color: var(--gold);
+}
+
+.headerMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeUp 1.1s 0.6s var(--ease) both;
+  padding-bottom: 8px;
+}
+
+.metaLabel {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--faint);
+  font-weight: 500;
+}
+
+.metaValue {
+  font-family: var(--serif);
+  font-size: 26px;
+  color: var(--text);
+}
+
+/* ---------- Main section (01 form / 02 channels) ---------- */
+
+.main {
+  padding: 88px 48px 140px;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 110px;
+  align-items: start;
+}
+
+.numLabel {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--faint);
+  font-weight: 500;
+}
+
+.formTitle {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 32px;
+  margin: 18px 0 10px;
+}
+
+.formSub {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--muted);
+  margin: 0 0 48px;
+  line-height: 1.8;
+  max-width: 48ch;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.fieldLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldName {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  font-weight: 500;
+}
+
+.field {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(242, 238, 230, 0.18);
+  color: var(--text);
+  padding: 14px 0;
+  font-size: 15px;
+  font-weight: 300;
+  transition: border-color 0.4s;
+  border-radius: 0;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--body-font);
+}
+
+.field:focus {
+  outline: none;
+  border-bottom-color: var(--gold);
+}
+
+.field::placeholder {
+  color: var(--faint-2);
+}
+
+.select {
+  appearance: none;
+  cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--gold) 50%),
+    linear-gradient(135deg, var(--gold) 50%, transparent 50%);
+  background-position: calc(100% - 14px) 55%, calc(100% - 8px) 55%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.select option {
+  background: #131315;
+  color: #f2eee6;
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.submitRow {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 8px;
+}
+
+.submitBtn {
+  background: var(--gold);
+  color: var(--bg);
+  border: none;
+  padding: 19px 52px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.4s;
+}
+
+.submitBtn:hover {
+  background: var(--gold-bright);
+}
+
+.sentNote {
+  font-size: 13px;
+  color: var(--gold);
+}
+
+/* ---------- 02 — Direct channels ---------- */
+
+.channelsCol {
+  border-left: 1px solid var(--hairline-2);
+  padding-left: 64px;
+}
+
+.channels {
+  display: flex;
+  flex-direction: column;
+  margin-top: 26px;
+}
+
+.channel {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--hairline-2);
+  transition: padding-left 0.5s var(--ease);
+}
+
+.channel:hover {
+  padding-left: 14px;
+}
+
+.channelLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.channelLabel {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+  font-weight: 500;
+}
+
+.channelLabelGold {
+  color: var(--gold);
+}
+
+.channelValue {
+  font-family: var(--serif);
+  font-size: 24px;
+}
+
+.arrow {
+  color: var(--faint-2);
+  font-size: 20px;
+  transition: transform 0.5s var(--ease), color 0.4s;
+}
+
+.channel:hover .arrow {
+  transform: translateX(8px);
+  color: var(--gold);
+}
+
+.metaGrid {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.metaCol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.metaColLabel {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--faint);
+  font-weight: 500;
+}
+
+.metaColText {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-2);
+  line-height: 1.8;
+}
+
+.gearWrap {
+  margin-top: 44px;
+  overflow: hidden;
+}
+
+.gearImg {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(0.2);
+  transition: transform 1.2s var(--ease);
+}
+
+.gearImg:hover {
+  transform: scale(1.05);
+}
+
+/* ---------- Footer ---------- */
+
+/*
+ * The design's global anchor rule has no transition (Lien He.dc.html lines
+ * 17-18) — footer links snap to gold on hover. globals.css adds
+ * `transition: color 0.35s` to all anchors, so undo it for the compact
+ * footer rendered on this page.
+ */
+.footerWrap a {
+  transition: none;
+}
+
+/* ---------- 03 — FAQ ---------- */
+
+.faqSection {
+  border-top: 1px solid var(--hairline);
+  background: var(--bg-alt);
+  padding: 120px 48px;
+}
+
+.faqGrid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 110px;
+  align-items: start;
+}
+
+.faqTitle {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(30px, 3vw, 44px);
+  line-height: 1.15;
+  margin: 18px 0 0;
+  max-width: 14ch;
+}
+
+.faqSub {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 20px 0 0;
+  max-width: 34ch;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+}
+
+.faqItem {
+  border-bottom: 1px solid var(--hairline-2);
+}
+
+.faqQ {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 28px 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--serif);
+  font-size: 19px;
+  transition: color 0.35s;
+}
+
+.faqQOpen {
+  color: var(--gold);
+}
+
+.faqQ:hover {
+  color: var(--gold);
+}
+
+.faqQLeft {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.faqNum {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--faint);
+  letter-spacing: 0.1em;
+}
+
+.faqIcon {
+  color: var(--gold);
+  font-size: 20px;
+  flex-shrink: 0;
+  font-family: var(--body-font);
+  font-weight: 300;
+}
+
+.faqA {
+  overflow: hidden;
+  max-height: 0px;
+  transition: max-height 0.6s var(--ease);
+}
+
+.faqAOpen {
+  max-height: 260px;
+}
+
+.faqAText {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--muted);
+  margin: 0;
+  padding: 0 60px 30px 42px;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 160px 32px 0;
+  }
+
+  .main {
+    padding: 64px 32px 100px;
+  }
+
+  .mainGrid {
+    grid-template-columns: 1fr;
+    gap: 72px;
+  }
+
+  /* Stacked below the form: swap the vertical divider for a horizontal one. */
+  .channelsCol {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--hairline-2);
+    padding-top: 56px;
+  }
+
+  .faqSection {
+    padding: 100px 32px;
+  }
+
+  .faqGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+@media (max-width: 560px) {
+  .header {
+    padding: 140px 20px 0;
+  }
+
+  .headerRow {
+    padding-bottom: 44px;
+  }
+
+  .main {
+    padding: 48px 20px 72px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .submitRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .submitBtn {
+    width: 100%;
+    padding: 19px 24px;
+  }
+
+  .sentNote {
+    text-align: center;
+  }
+
+  .metaGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .faqSection {
+    padding: 72px 20px;
+  }
+
+  .faqQ {
+    font-size: 17px;
+  }
+
+  .faqAText {
+    padding: 0 28px 26px 30px;
+  }
+
+  /* Narrower column = more wrapped lines; keep open answers unclipped. */
+  .faqAOpen {
+    max-height: 520px;
+  }
+}

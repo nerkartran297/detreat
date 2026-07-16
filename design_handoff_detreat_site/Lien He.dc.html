@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Prata&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #0a0a0b; color: #f2eee6; font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #f2eee6; text-decoration: none; }
+  a:hover { color: #c9a96a; }
+  ::selection { background: #c9a96a; color: #0a0a0b; }
+  @keyframes dt-eq { from { transform: scaleY(.3); } to { transform: scaleY(1); } }
+  @keyframes dt-fadeUp { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: translateY(0); } }
+  .dt-logo .dt-bar { animation: dt-eq .8s ease-in-out infinite alternate; animation-play-state: paused; }
+  .dt-logo:hover .dt-bar { animation-play-state: running; }
+  .dt-nav { position: relative; padding-bottom: 4px; transition: color .35s; }
+  .dt-nav::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: #c9a96a; transform: scaleX(0); transform-origin: left; transition: transform .45s cubic-bezier(.22,1,.36,1); }
+  .dt-nav:hover::after { transform: scaleX(1); }
+  .dt-reveal { opacity: 0; transform: translateY(36px); transition: opacity 1.1s cubic-bezier(.22,1,.36,1), transform 1.1s cubic-bezier(.22,1,.36,1); }
+  .dt-reveal.dt-in { opacity: 1; transform: translateY(0); }
+  input, select, textarea { font-family: 'Manrope', sans-serif; }
+  .dt-field { background: transparent; border: none; border-bottom: 1px solid rgba(242,238,230,.18); color: #f2eee6; padding: 14px 0; font-size: 15px; font-weight: 300; transition: border-color .4s; border-radius: 0; width: 100%; box-sizing: border-box; }
+  .dt-field:focus { outline: none; border-bottom-color: #c9a96a; }
+  .dt-field::placeholder { color: #57524a; }
+  .dt-channel { transition: padding-left .5s cubic-bezier(.22,1,.36,1); }
+  .dt-channel:hover { padding-left: 14px; }
+  .dt-channel .dt-arrow { transition: transform .5s cubic-bezier(.22,1,.36,1), color .4s; }
+  .dt-channel:hover .dt-arrow { transform: translateX(8px); color: #c9a96a; }
+</style>
+</helmet>
+
+<nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: linear-gradient(rgba(10,10,11,.92), rgba(10,10,11,0)); backdrop-filter: blur(2px)">
+  <a href="De-treat Luxury.dc.html" class="dt-logo" style="display: flex; align-items: center; gap: 14px">
+    <span style="display: flex; align-items: flex-end; gap: 3px; height: 28px">
+      <span class="dt-bar" style="width: 3px; height: 12px; background: #c9a96a; transform-origin: bottom; animation-delay: -.1s"></span>
+      <span class="dt-bar" style="width: 3px; height: 22px; background: #c9a96a; transform-origin: bottom; animation-delay: -.35s"></span>
+      <span class="dt-bar" style="width: 3px; height: 28px; background: #c9a96a; transform-origin: bottom; animation-delay: -.6s"></span>
+      <span class="dt-bar" style="width: 3px; height: 18px; background: #c9a96a; transform-origin: bottom; animation-delay: -.2s"></span>
+      <span class="dt-bar" style="width: 3px; height: 25px; background: #c9a96a; transform-origin: bottom; animation-delay: -.5s"></span>
+    </span>
+    <span style="display: flex; flex-direction: column; line-height: 1.15">
+      <span style="font-family: 'Prata', serif; font-size: 21px; font-weight: 400; letter-spacing: .1em">DE-TREAT</span>
+      <span style="font-size: 8.5px; letter-spacing: .4em; color: #c9a96a; text-transform: uppercase; font-weight: 500">Your sound solution</span>
+    </span>
+  </a>
+  <div style="display: flex; align-items: center; gap: clamp(16px, 2.4vw, 34px); font-family: 'Archivo', sans-serif; font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; font-weight: 500">
+    <a href="San Pham.dc.html" class="dt-nav" style="color: #cfc9bd" style-hover="color: #f2eee6">{{ t.navProducts }}</a>
+    <a href="Du An.dc.html" class="dt-nav" style="color: #cfc9bd" style-hover="color: #f2eee6">{{ t.navProjects }}</a>
+    <a href="De-treat Luxury.dc.html#quy-trinh" class="dt-nav" style="color: #cfc9bd" style-hover="color: #f2eee6">{{ t.navProcess }}</a>
+    <a href="Lien He.dc.html" class="dt-nav" style="color: #c9a96a" style-hover="color: #c9a96a">{{ t.navContact }}</a>
+    <button onClick="{{ toggleLang }}" style="background: none; border: 1px solid rgba(242,238,230,.25); color: #cfc9bd; padding: 9px 16px; font-family: 'Archivo', sans-serif; font-size: 11px; letter-spacing: .18em; cursor: pointer; text-transform: uppercase; transition: all .4s" style-hover="border-color: #c9a96a; color: #c9a96a">{{ otherLangLabel }}</button>
+    <a href="https://zalo.me/0914593334" style="border: 1px solid #c9a96a; color: #c9a96a; padding: 10px 24px; transition: all .4s" style-hover="background: #c9a96a; color: #0a0a0b">{{ t.navCta }}</a>
+  </div>
+</nav>
+
+<header style="padding: 210px 48px 0; max-width: 1400px; margin: 0 auto; box-sizing: border-box">
+  <div style="display: flex; align-items: center; gap: 16px; animation: dt-fadeUp 1.1s .2s cubic-bezier(.22,1,.36,1) both">
+    <span style="display: block; width: 56px; height: 1px; background: #c9a96a"></span>
+    <span style="font-family: 'Archivo', sans-serif; font-size: 11px; letter-spacing: .42em; text-transform: uppercase; color: #c9a96a; font-weight: 500">{{ t.eyebrow }}</span>
+  </div>
+  <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; flex-wrap: wrap; border-bottom: 1px solid rgba(242,238,230,.1); padding-bottom: 64px">
+    <h1 style="font-family: 'Prata', serif; font-weight: 400; font-size: clamp(48px, 6vw, 96px); line-height: 1.04; margin: 26px 0 0; max-width: 14ch; text-wrap: balance; animation: dt-fadeUp 1.1s .4s cubic-bezier(.22,1,.36,1) both">{{ t.title }} <span style="color: #c9a96a">{{ t.titleAccent }}</span></h1>
+    <div style="display: flex; flex-direction: column; gap: 8px; animation: dt-fadeUp 1.1s .6s cubic-bezier(.22,1,.36,1) both; padding-bottom: 8px">
+      <span style="font-family: 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: #6f695e; font-weight: 500">{{ t.responseLabel }}</span>
+      <span style="font-family: 'Prata', serif; font-size: 26px; color: #f2eee6">{{ t.responseValue }}</span>
+    </div>
+  </div>
+</header>
+
+<section style="padding: 88px 48px 140px; max-width: 1400px; margin: 0 auto; box-sizing: border-box">
+  <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 110px; align-items: start">
+    <div class="dt-reveal">
+      <span style="font-family: 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: .34em; text-transform: uppercase; color: #6f695e; font-weight: 500">01 — {{ t.formLabel }}</span>
+      <h2 style="font-family: 'Prata', serif; font-weight: 400; font-size: 32px; margin: 18px 0 10px">{{ t.formTitle }}</h2>
+      <p style="font-size: 14px; font-weight: 300; color: #9b9487; margin: 0 0 48px; line-height: 1.8; max-width: 48ch">{{ t.formSub }}</p>
+      <div style="display: flex; flex-direction: column; gap: 36px">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px">
+          <label style="display: flex; flex-direction: column; gap: 6px">
+            <span style="font-family: 'Archivo', sans-serif; font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: #8d867a; font-weight: 500">{{ t.fName }} — {{ t.required }}</span>
+            <input id="dt-f-name" type="text" class="dt-field" placeholder="{{ t.fNamePh }}">
+          </label>
+          <label style="display: flex; flex-direction: column; gap: 6px">
+            <span style="font-family: 'Archivo', sans-serif; font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: #8d867a; font-weight: 500">{{ t.fPhone }} — {{ t.required }}</span>
+            <input id="dt-f-phone" type="tel" class="dt-field" placeholder="+84 —">
+          </label>
+        </div>
+        <label style="display: flex; flex-direction: column; gap: 6px">
+          <span style="font-family: 'Archivo', sans-serif; font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: #8d867a; font-weight: 500">{{ t.fRoom }}</span>
+          <select id="dt-f-room" class="dt-field" style="appearance: none; cursor: pointer; background-image: linear-gradient(45deg, transparent 50%, #c9a96a 50%), linear-gradient(135deg, #c9a96a 50%, transparent 50%); background-position: calc(100% - 14px) 55%, calc(100% - 8px) 55%; background-size: 6px 6px; background-repeat: no-repeat">
+            <sc-for list="{{ roomTypes }}" as="r" hint-placeholder-count="6">
+              <option value="{{ r }}" style="background: #131315; color: #f2eee6">{{ r }}</option>
+            </sc-for>
+          </select>
+        </label>
+        <label style="display: flex; flex-direction: column; gap: 6px">
+          <span style="font-family: 'Archivo', sans-serif; font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: #8d867a; font-weight: 500">{{ t.fMsg }}</span>
+          <textarea id="dt-f-msg" rows="4" class="dt-field" placeholder="{{ t.fMsgPh }}" style="resize: vertical"></textarea>
+        </label>
+        <div style="display: flex; align-items: center; gap: 28px; margin-top: 8px">
+          <button onClick="{{ submitForm }}" style="background: #c9a96a; color: #0a0a0b; border: none; padding: 19px 52px; font-family: 'Archivo', sans-serif; font-size: 12px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; cursor: pointer; transition: background .4s" style-hover="background: #e0c48a">{{ t.fSubmit }}</button>
+          <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+            <span style="font-size: 13px; color: #c9a96a">{{ t.fSent }}</span>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+    <div class="dt-reveal" style="border-left: 1px solid rgba(242,238,230,.1); padding-left: 64px">
+      <span style="font-family: 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: .34em; text-transform: uppercase; color: #6f695e; font-weight: 500">02 — {{ t.directLabel }}</span>
+      <div style="display: flex; flex-direction: column; margin-top: 26px">
+        <a href="https://zalo.me/0914593334" class="dt-channel" style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 26px 0; border-bottom: 1px solid rgba(242,238,230,.1)">
+          <span style="display: flex; flex-direction: column; gap: 6px">
+            <span style="font-family: 'Archivo', sans-serif; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: #c9a96a; font-weight: 500">Zalo — {{ t.fastest }}</span>
+            <span style="font-family: 'Prata', serif; font-size: 24px">0914 593 334</span>
+          </span>
+          <span class="dt-arrow" style="color: #57524a; font-size: 20px">→</span>
+        </a>
+        <a href="tel:+84914593334" class="dt-channel" style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 26px 0; border-bottom: 1px solid rgba(242,238,230,.1)">
+          <span style="display: flex; flex-direction: column; gap: 6px">
+            <span style="font-family: 'Archivo', sans-serif; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: #8d867a; font-weight: 500">{{ t.callDirect }}</span>
+            <span style="font-family: 'Prata', serif; font-size: 24px">+84 914 593 334</span>
+          </span>
+          <span class="dt-arrow" style="color: #57524a; font-size: 20px">→</span>
+        </a>
+        <a href="mailto:hello@detreat.com.vn" class="dt-channel" style="display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: 26px 0; border-bottom: 1px solid rgba(242,238,230,.1)">
+          <span style="display: flex; flex-direction: column; gap: 6px">
+            <span style="font-family: 'Archivo', sans-serif; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: #8d867a; font-weight: 500">Email</span>
+            <span style="font-family: 'Prata', serif; font-size: 24px">hello@detreat.com.vn</span>
+          </span>
+          <span class="dt-arrow" style="color: #57524a; font-size: 20px">→</span>
+        </a>
+      </div>
+      <div style="margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px">
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <span style="font-family: 'Archivo', sans-serif; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: #6f695e; font-weight: 500">{{ t.areaLabel }}</span>
+          <span style="font-size: 14px; font-weight: 300; color: #b8b1a4; line-height: 1.8">{{ t.area1 }}</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <span style="font-family: 'Archivo', sans-serif; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: #6f695e; font-weight: 500">{{ t.onlineLabel }}</span>
+          <span style="font-size: 14px; font-weight: 300; color: #b8b1a4; line-height: 1.8">{{ t.area2 }}</span>
+        </div>
+      </div>
+      <div style="margin-top: 44px; overflow: hidden">
+        <img src="https://detreat.com.vn/_astro/gear.C0djJ93a_nJ2f3.webp" alt="De-treat measurement rig" style="width: 100%; height: 220px; object-fit: cover; display: block; filter: grayscale(.2); transition: transform 1.2s cubic-bezier(.22,1,.36,1)" style-hover="transform: scale(1.05)">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="border-top: 1px solid rgba(242,238,230,.08); background: #0e0e10; padding: 120px 48px">
+  <div style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.6fr; gap: 110px; align-items: start">
+    <div class="dt-reveal">
+      <span style="font-family: 'Archivo', sans-serif; font-size: 10.5px; letter-spacing: .34em; text-transform: uppercase; color: #6f695e; font-weight: 500">03 — FAQ</span>
+      <h2 style="font-family: 'Prata', serif; font-weight: 400; font-size: clamp(30px, 3vw, 44px); line-height: 1.15; margin: 18px 0 0; max-width: 14ch">{{ t.faqTitle }}</h2>
+      <p style="font-size: 14px; font-weight: 300; color: #9b9487; line-height: 1.8; margin: 20px 0 0; max-width: 34ch">{{ t.faqSub }}</p>
+    </div>
+    <div class="dt-reveal" style="display: flex; flex-direction: column">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+        <div style="border-bottom: 1px solid rgba(242,238,230,.1)">
+          <button onClick="{{ q.toggle }}" style="width: 100%; background: none; border: none; color: {{ q.qColor }}; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px 0; cursor: pointer; text-align: left; font-family: 'Prata', serif; font-size: 19px; transition: color .35s" style-hover="color: #c9a96a">
+            <span style="display: flex; align-items: baseline; gap: 20px"><span style="font-family: 'Archivo', sans-serif; font-size: 11px; color: #6f695e; letter-spacing: .1em">{{ q.num }}</span> {{ q.q }}</span>
+            <span style="color: #c9a96a; font-size: 20px; flex-shrink: 0; font-family: 'Manrope', sans-serif; font-weight: 300">{{ q.icon }}</span>
+          </button>
+          <div style="overflow: hidden; max-height: {{ q.maxH }}; transition: max-height .6s cubic-bezier(.22,1,.36,1)">
+            <p style="font-size: 14px; font-weight: 300; line-height: 1.85; color: #9b9487; margin: 0; padding: 0 60px 30px 42px">{{ q.a }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<footer style="border-top: 1px solid rgba(242,238,230,.08); padding: 64px 48px 44px; background: #0a0a0b">
+  <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap">
+    <a href="De-treat Luxury.dc.html" class="dt-logo" style="display: flex; align-items: center; gap: 12px">
+      <span style="display: flex; align-items: flex-end; gap: 3px; height: 22px">
+        <span class="dt-bar" style="width: 3px; height: 10px; background: #c9a96a; transform-origin: bottom; animation-delay: -.1s"></span>
+        <span class="dt-bar" style="width: 3px; height: 17px; background: #c9a96a; transform-origin: bottom; animation-delay: -.35s"></span>
+        <span class="dt-bar" style="width: 3px; height: 22px; background: #c9a96a; transform-origin: bottom; animation-delay: -.6s"></span>
+        <span class="dt-bar" style="width: 3px; height: 14px; background: #c9a96a; transform-origin: bottom; animation-delay: -.2s"></span>
+        <span class="dt-bar" style="width: 3px; height: 20px; background: #c9a96a; transform-origin: bottom; animation-delay: -.5s"></span>
+      </span>
+      <span style="font-family: 'Prata', serif; font-size: 18px; letter-spacing: .1em">DE-TREAT</span>
+    </a>
+    <div style="display: flex; gap: 28px; font-size: 13px; font-weight: 300; color: #b8b1a4">
+      <a href="San Pham.dc.html">{{ t.navProducts }}</a>
+      <a href="Du An.dc.html">{{ t.navProjects }}</a>
+      <a href="Lien He.dc.html">{{ t.navContact }}</a>
+    </div>
+    <span style="font-size: 12px; color: #6f695e">© 2026 De-treat — Nguyễn Thành Linh</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: (typeof localStorage !== 'undefined' && localStorage.getItem('dt-lang')) || 'en', openFaq: 0, sent: false };
+  componentDidMount() {
+    const observe = () => {
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) { e.target.classList.add('dt-in'); io.unobserve(e.target); }
+        }
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.dt-reveal:not(.dt-in)').forEach((el) => io.observe(el));
+      this._io = io;
+    };
+    observe();
+    this._observe = observe;
+  }
+  componentDidUpdate() { if (this._observe) this._observe(); }
+  componentWillUnmount() { if (this._io) this._io.disconnect(); }
+  renderVals() {
+    const lang = this.state.lang;
+    const en = {
+      navProducts: 'Products', navProjects: 'Projects', navProcess: 'Process', navContact: 'Contact', navCta: 'Message us',
+      eyebrow: 'Contact', title: 'It starts with', titleAccent: 'your room.',
+      responseLabel: 'Response time', responseValue: 'Same day',
+      formLabel: 'Consultation request', formTitle: 'Tell us about your space', formSub: 'Room dimensions, purpose, and what bothers you about the sound. Attach photos later via Zalo — we quote within the day.',
+      required: 'Required', fName: 'Full name', fNamePh: 'Your name', fPhone: 'Phone / Zalo', fRoom: 'Room type', fMsg: 'Message', fMsgPh: 'Size, purpose, acoustic issues…',
+      fSubmit: 'Send request', fSent: 'Opening Zalo — message copied to clipboard.',
+      directLabel: 'Direct channels', fastest: 'Fastest', callDirect: 'Phone',
+      areaLabel: 'On-site surveys', area1: 'Ho Chi Minh City & surrounding provinces', onlineLabel: 'Online consultation', area2: 'Nationwide, via photos & room dimensions',
+      faqTitle: 'Common questions, answered.', faqSub: 'Everything most clients ask before their first survey. Anything else — just message us.',
+      roomTypes: ['Home studio', 'Podcast', 'Hi-Fi listening room', 'DJ / Club', 'Commercial space', 'Other'],
+      faqs: [
+        { q: 'How much does treating a room cost?', a: 'It depends on size and goals. A small home studio typically starts from a few million VND for a basic package; professional listening and recording rooms run higher. Send photos via Zalo for a fast quote.' },
+        { q: 'Do you do on-site surveys?', a: 'Yes. For projects in Ho Chi Minh City we survey and measure in person. Outside the area, we consult online using photos and room dimensions.' },
+        { q: 'How long does a room take?', a: 'Most installs finish in 1–3 days depending on scope. In-stock products ship fast; made-to-measure pieces need extra production time.' },
+        { q: 'Can I install it myself?', a: 'Yes. Many absorbers and bass traps mount with adhesive or simple hanging frames. We provide measured placement guidance so you can DIY.' }
+      ]
+    };
+    const vi = {
+      navProducts: 'Sản phẩm', navProjects: 'Dự án', navProcess: 'Quy trình', navContact: 'Liên hệ', navCta: 'Nhắn Zalo',
+      eyebrow: 'Liên hệ', title: 'Bắt đầu từ', titleAccent: 'căn phòng của bạn.',
+      responseLabel: 'Thời gian phản hồi', responseValue: 'Trong ngày',
+      formLabel: 'Yêu cầu tư vấn', formTitle: 'Kể chúng tôi nghe về căn phòng', formSub: 'Kích thước, mục đích sử dụng và vấn đề âm thanh đang gặp. Ảnh phòng gửi sau qua Zalo — báo giá trong ngày.',
+      required: 'Bắt buộc', fName: 'Họ tên', fNamePh: 'Tên của bạn', fPhone: 'SĐT / Zalo', fRoom: 'Loại phòng', fMsg: 'Mô tả nhu cầu', fMsgPh: 'Diện tích, mục đích, vấn đề âm thanh…',
+      fSubmit: 'Gửi yêu cầu', fSent: 'Đang mở Zalo — nội dung đã copy sẵn.',
+      directLabel: 'Kênh trực tiếp', fastest: 'Nhanh nhất', callDirect: 'Điện thoại',
+      areaLabel: 'Khảo sát tận nơi', area1: 'TP. Hồ Chí Minh & các tỉnh lân cận', onlineLabel: 'Tư vấn online', area2: 'Toàn quốc, qua ảnh & thông số phòng',
+      faqTitle: 'Những câu hỏi thường gặp.', faqSub: 'Những điều khách hàng hay hỏi trước buổi khảo sát đầu tiên. Còn gì khác — cứ nhắn chúng tôi.',
+      roomTypes: ['Home studio', 'Podcast', 'Phòng nghe Hi-Fi', 'DJ / Club', 'Không gian thương mại', 'Khác'],
+      faqs: [
+        { q: 'Chi phí xử lý một phòng khoảng bao nhiêu?', a: 'Tuỳ diện tích và mục tiêu. Home studio nhỏ thường từ vài triệu cho gói cơ bản; phòng nghe / phòng thu chuyên nghiệp cao hơn. Gửi ảnh phòng qua Zalo để nhận báo giá nhanh.' },
+        { q: 'Có khảo sát tận nơi không?', a: 'Có. Với dự án trong khu vực TP.HCM, chúng tôi khảo sát và đo đạc trực tiếp. Ngoài khu vực có thể tư vấn online qua ảnh và thông số phòng.' },
+        { q: 'Bao lâu thì xong một phòng?', a: 'Phần lớn dự án thi công trong 1–3 ngày tuỳ khối lượng. Sản phẩm có sẵn giao nhanh; hàng đặt theo kích thước riêng cần thêm thời gian sản xuất.' },
+        { q: 'Tôi tự lắp được không?', a: 'Được. Nhiều sản phẩm tiêu âm / bass trap lắp bằng keo hoặc khung treo đơn giản. Chúng tôi hướng dẫn vị trí đặt theo phép đo để bạn tự thi công.' }
+      ]
+    };
+    const t = lang === 'vi' ? vi : en;
+    const open = this.state.openFaq;
+    return {
+      t,
+      roomTypes: t.roomTypes,
+      otherLangLabel: lang === 'vi' ? 'EN' : 'VI',
+      toggleLang: () => {
+        const next = lang === 'vi' ? 'en' : 'vi';
+        try { localStorage.setItem('dt-lang', next); } catch (e) {}
+        this.setState({ lang: next });
+      },
+      faqs: t.faqs.map((f, i) => ({
+        ...f,
+        num: '0' + (i + 1),
+        icon: open === i ? '−' : '+',
+        qColor: open === i ? '#c9a96a' : '#f2eee6',
+        maxH: open === i ? '260px' : '0px',
+        toggle: () => this.setState({ openFaq: open === i ? -1 : i })
+      })),
+      sent: this.state.sent,
+      submitForm: () => {
+        const v = (id) => (document.getElementById(id) || {}).value || '';
+        const msg = [v('dt-f-name'), v('dt-f-phone'), v('dt-f-room'), v('dt-f-msg')].filter(Boolean).join(' — ');
+        this.setState({ sent: true });
+        try { navigator.clipboard.writeText(msg); } catch (e) {}
+        window.open('https://zalo.me/0914593334', '_blank');
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

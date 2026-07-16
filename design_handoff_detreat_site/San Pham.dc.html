@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Prata&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #0a0a0b; color: #f2eee6; font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #f2eee6; text-decoration: none; }
+  a:hover { color: #c9a96a; }
+  ::selection { background: #c9a96a; color: #0a0a0b; }
+  @keyframes dt-eq { from { transform: scaleY(.3); } to { transform: scaleY(1); } }
+  @keyframes dt-fadeUp { from { opacity: 0; transform: translateY(36px); } to { opacity: 1; transform: translateY(0); } }
+  .dt-logo .dt-bar { animation: dt-eq .8s ease-in-out infinite alternate; animation-play-state: paused; }
+  .dt-logo:hover .dt-bar { animation-play-state: running; }
+  .dt-nav { position: relative; padding-bottom: 4px; transition: color .35s; }
+  .dt-nav::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: #c9a96a; transform: scaleX(0); transform-origin: left; transition: transform .45s cubic-bezier(.22,1,.36,1); }
+  .dt-nav:hover::after { transform: scaleX(1); }
+  .dt-reveal { opacity: 0; transform: translateY(36px); transition: opacity 1.1s cubic-bezier(.22,1,.36,1), transform 1.1s cubic-bezier(.22,1,.36,1); }
+  .dt-reveal.dt-in { opacity: 1; transform: translateY(0); }
+  .dt-prod { animation: dt-fadeUp .8s cubic-bezier(.22,1,.36,1) both; }
+  .dt-prod .dt-prod-img { transition: transform .9s cubic-bezier(.22,1,.36,1); }
+  .dt-prod:hover .dt-prod-img { transform: translateY(-8px) scale(1.06); }
+</style>
+</helmet>
+
+<nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: linear-gradient(rgba(10,10,11,.92), rgba(10,10,11,0)); backdrop-filter: blur(2px)">
+  <a href="De-treat Luxury.dc.html" class="dt-logo" style="display: flex; align-items: center; gap: 14px">
+    <span style="display: flex; align-items: flex-end; gap: 3px; height: 28px">
+      <span class="dt-bar" style="width: 3px; height: 12px; background: #c9a96a; transform-origin: bottom; animation-delay: -.1s"></span>
+      <span class="dt-bar" style="width: 3px; height: 22px; background: #c9a96a; transform-origin: bottom; animation-delay: -.35s"></span>
+      <span class="dt-bar" style="width: 3px; height: 28px; background: #c9a96a; transform-origin: bottom; animation-delay: -.6s"></span>
+      <span class="dt-bar" style="width: 3px; height: 18px; background: #c9a96a; transform-origin: bottom; animation-delay: -.2s"></span>
+      <span class="dt-bar" style="width: 3px; height: 25px; background: #c9a96a; transform-origin: bottom; animation-delay: -.5s"></span>
+    </span>
+    <span style="display: flex; flex-direction: column; line-height: 1.15">
+      <span style="font-family: 'Prata', serif; font-size: 21px; font-weight: 400; letter-spacing: .1em">DE-TREAT</span>
+      <span style="font-size: 8.5px; letter-spacing: .4em; color: #c9a96a; text-transform: uppercase; font-weight: 500">Your sound solution</span>
+    </span>
+  </a>
+  <div style="display: flex; align-items: center; gap: clamp(16px, 2.4vw, 34px); font-family: 'Archivo', sans-serif; font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; font-weight: 500">
+    <a href="San Pham.dc.html" class="dt-nav" style="color: #c9a96a" style-hover="color: #c9a96a">{{ t.navProducts }}</a>
+    <a href="Du An.dc.html" class="dt-nav" style="color: #cfc9bd" style-hover="color: #f2eee6">{{ t.navProjects }}</a>
+    <a href="De-treat Luxury.dc.html#quy-trinh" class="dt-nav" style="color: #cfc9bd" style-hover="color: #f2eee6">{{ t.navProcess }}</a>
+    <a href="Lien He.dc.html" class="dt-nav" style="color: #cfc9bd" style-hover="color: #f2eee6">{{ t.navContact }}</a>
+    <button onClick="{{ toggleLang }}" style="background: none; border: 1px solid rgba(242,238,230,.25); color: #cfc9bd; padding: 9px 16px; font-family: 'Archivo', sans-serif; font-size: 11px; letter-spacing: .18em; cursor: pointer; text-transform: uppercase; transition: all .4s" style-hover="border-color: #c9a96a; color: #c9a96a">{{ otherLangLabel }}</button>
+    <a href="https://zalo.me/0914593334" style="border: 1px solid #c9a96a; color: #c9a96a; padding: 10px 24px; transition: all .4s" style-hover="background: #c9a96a; color: #0a0a0b">{{ t.navCta }}</a>
+  </div>
+</nav>
+
+<header style="padding: 200px 48px 64px; max-width: 1400px; margin: 0 auto; box-sizing: border-box">
+  <div style="display: flex; align-items: center; gap: 16px; animation: dt-fadeUp 1.1s .2s cubic-bezier(.22,1,.36,1) both">
+    <span style="display: block; width: 56px; height: 1px; background: #c9a96a"></span>
+    <span style="font-family: 'Archivo', sans-serif; font-size: 11px; letter-spacing: .42em; text-transform: uppercase; color: #c9a96a; font-weight: 500">{{ t.eyebrow }}</span>
+  </div>
+  <h1 style="font-family: 'Prata', serif; font-weight: 400; font-size: clamp(44px, 5.6vw, 84px); line-height: 1.06; margin: 26px 0 0; max-width: 18ch; text-wrap: balance; animation: dt-fadeUp 1.1s .4s cubic-bezier(.22,1,.36,1) both">{{ t.title }} <span style="color: #c9a96a">{{ t.titleAccent }}</span></h1>
+  <p style="font-size: 16px; font-weight: 300; line-height: 1.8; color: #b8b1a4; max-width: 56ch; margin: 28px 0 0; animation: dt-fadeUp 1.1s .6s cubic-bezier(.22,1,.36,1) both">{{ t.sub }}</p>
+</header>
+
+<div style="position: sticky; top: 76px; z-index: 40; background: rgba(10,10,11,.92); backdrop-filter: blur(12px); border-top: 1px solid rgba(242,238,230,.08); border-bottom: 1px solid rgba(242,238,230,.08)">
+  <div style="max-width: 1400px; margin: 0 auto; padding: 0 48px; display: flex; gap: 8px; overflow-x: auto">
+    <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+      <button onClick="{{ f.set }}" style="background: none; border: none; border-bottom: 2px solid {{ f.border }}; color: {{ f.color }}; padding: 20px 18px; font-family: 'Archivo', sans-serif; font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; cursor: pointer; white-space: nowrap; font-weight: 500; transition: color .35s" style-hover="color: #c9a96a">{{ f.label }} <span style="color: #6f695e; margin-left: 6px">{{ f.count }}</span></button>
+    </sc-for>
+  </div>
+</div>
+
+<section style="padding: 72px 48px 140px; max-width: 1400px; margin: 0 auto; box-sizing: border-box">
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px">
+    <sc-for list="{{ products }}" as="p" hint-placeholder-count="8">
+      <a href="{{ p.href }}" class="dt-prod" style="display: flex; flex-direction: column; border: 1px solid rgba(242,238,230,.1); background: linear-gradient(160deg, #131315, #0a0a0b); padding: 30px 28px 32px; transition: border-color .5s, transform .5s, box-shadow .6s; animation-delay: {{ p.delay }}" style-hover="border-color: rgba(201,169,106,.55); transform: translateY(-6px); box-shadow: 0 0 32px rgba(201,169,106,.14)">
+        <div style="display: flex; justify-content: space-between; align-items: center">
+          <span style="font-family: 'Archivo', sans-serif; font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: #c9a96a; border: 1px solid rgba(201,169,106,.35); padding: 6px 14px; font-weight: 500">{{ p.cat }}</span>
+          <span style="font-family: 'Archivo', sans-serif; font-size: 12px; color: #8d867a; letter-spacing: .08em">NRC {{ p.nrc }}</span>
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center; height: 240px; margin: 24px 0 8px">
+          <img class="dt-prod-img" src="{{ p.img }}" alt="{{ p.name }}" loading="lazy" style="max-height: 100%; max-width: 82%; object-fit: contain; filter: drop-shadow(0 26px 32px rgba(0,0,0,.6))">
+        </div>
+        <h3 style="font-family: 'Prata', serif; font-weight: 400; font-size: 20px; line-height: 1.35; margin: 14px 0 12px">{{ p.name }}</h3>
+        <p style="font-size: 13px; font-weight: 300; line-height: 1.7; color: #9b9487; margin: 0; flex: 1">{{ p.desc }}</p>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 28px; border-top: 1px solid rgba(242,238,230,.1); padding-top: 18px">
+          <span style="font-size: 12px; color: #b8b1a4">{{ t.priceOnRequest }}</span>
+          <span style="font-family: 'Archivo', sans-serif; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: #c9a96a; font-weight: 500">{{ t.details }}</span>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<section style="border-top: 1px solid rgba(242,238,230,.08); background: #0e0e10; padding: 110px 48px; text-align: center">
+  <h2 class="dt-reveal" style="font-family: 'Prata', serif; font-weight: 400; font-size: clamp(32px, 3.6vw, 52px); margin: 0">{{ t.ctaTitle }} <span style="color: #c9a96a">{{ t.ctaTitleAccent }}</span></h2>
+  <p class="dt-reveal" style="font-size: 15px; font-weight: 300; line-height: 1.8; color: #b8b1a4; margin: 24px auto 0; max-width: 50ch">{{ t.ctaSub }}</p>
+  <div class="dt-reveal" style="display: flex; gap: 20px; justify-content: center; margin-top: 40px">
+    <a href="https://zalo.me/0914593334" style="background: #c9a96a; color: #0a0a0b; padding: 17px 40px; font-family: 'Archivo', sans-serif; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; transition: background .4s" style-hover="background: #e0c48a; color: #0a0a0b">{{ t.navCta }}</a>
+    <a href="Lien He.dc.html" style="border: 1px solid rgba(242,238,230,.3); padding: 17px 40px; font-family: 'Archivo', sans-serif; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; transition: border-color .4s" style-hover="border-color: #c9a96a; color: #c9a96a">{{ t.navContact }}</a>
+  </div>
+</section>
+
+<footer style="border-top: 1px solid rgba(242,238,230,.08); padding: 64px 48px 44px; background: #0a0a0b">
+  <div style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap">
+    <a href="De-treat Luxury.dc.html" class="dt-logo" style="display: flex; align-items: center; gap: 12px">
+      <span style="display: flex; align-items: flex-end; gap: 3px; height: 22px">
+        <span class="dt-bar" style="width: 3px; height: 10px; background: #c9a96a; transform-origin: bottom; animation-delay: -.1s"></span>
+        <span class="dt-bar" style="width: 3px; height: 17px; background: #c9a96a; transform-origin: bottom; animation-delay: -.35s"></span>
+        <span class="dt-bar" style="width: 3px; height: 22px; background: #c9a96a; transform-origin: bottom; animation-delay: -.6s"></span>
+        <span class="dt-bar" style="width: 3px; height: 14px; background: #c9a96a; transform-origin: bottom; animation-delay: -.2s"></span>
+        <span class="dt-bar" style="width: 3px; height: 20px; background: #c9a96a; transform-origin: bottom; animation-delay: -.5s"></span>
+      </span>
+      <span style="font-family: 'Prata', serif; font-size: 18px; letter-spacing: .1em">DE-TREAT</span>
+    </a>
+    <div style="display: flex; gap: 28px; font-size: 13px; font-weight: 300; color: #b8b1a4">
+      <a href="San Pham.dc.html">{{ t.navProducts }}</a>
+      <a href="Du An.dc.html">{{ t.navProjects }}</a>
+      <a href="Lien He.dc.html">{{ t.navContact }}</a>
+    </div>
+    <span style="font-size: 12px; color: #6f695e">© 2026 De-treat — Nguyễn Thành Linh</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: (typeof localStorage !== 'undefined' && localStorage.getItem('dt-lang')) || 'en', filter: 'all' };
+  componentDidMount() {
+    try {
+      const cat = new URLSearchParams(window.location.search).get('cat');
+      if (cat) this.setState({ filter: cat });
+    } catch (e) {}
+    const observe = () => {
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) { e.target.classList.add('dt-in'); io.unobserve(e.target); }
+        }
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.dt-reveal:not(.dt-in)').forEach((el) => io.observe(el));
+      this._io = io;
+    };
+    observe();
+    this._observe = observe;
+  }
+  componentDidUpdate() { if (this._observe) this._observe(); }
+  componentWillUnmount() { if (this._io) this._io.disconnect(); }
+  renderVals() {
+    const lang = this.state.lang;
+    const IMG = { 'tieu-am': 'uploads/TieuAm.png', 'tan-am': 'uploads/TanAm.png', 'bass-trap': 'uploads/BassTrap.png', 'ceiling-cloud': 'uploads/Ceiling.png' };
+    const P = (key, nrc, slug) => ({ key, nrc, href: 'https://detreat.com.vn/san-pham/' + slug + '/', img: IMG[key] });
+    const base = [
+      P('bass-trap', '1.05', 'bass-trap-corner-tri'), P('ceiling-cloud', '1.00', 'ceiling-cloud-rect-120'),
+      P('tan-am', '0.20', 'tan-am-qrd-skyline'), P('bass-trap', '0.95', 'bass-trap-column-round'),
+      P('ceiling-cloud', '0.90', 'ceiling-cloud-hexa'), P('tan-am', '0.25', 'tan-am-qrd-well-7'),
+      P('tieu-am', '1.00', 'tieu-am-panel-fabric-60'), P('bass-trap', '1.10', 'bass-trap-panel-superchunk'),
+      P('ceiling-cloud', '0.95', 'ceiling-cloud-baffle'), P('tan-am', '0.40', 'tan-am-slat-wood'),
+      P('bass-trap', '0.80', 'bass-trap-membrane-tuned'), P('ceiling-cloud', '1.05', 'ceiling-cloud-wood-frame'),
+      P('tan-am', '0.15', 'tan-am-poly-binary'), P('tieu-am', '0.80', 'tieu-am-pet-slim-40')
+    ];
+    const namesVi = ['Corner Tri — Trap góc tam giác','Cloud Rect 120 — Cloud chữ nhật','Skyline QRD — Tán âm 2D','Column Round — Trap trụ tròn','Cloud Hexa — Cloud lục giác','QRD Well 7 — Tán âm 1D dãy giếng','Acoustic Panel 60 — Bọc nỉ khung gỗ','Superchunk — Trap góc đặc','Cloud Baffle — Baffle treo trần dọc','Slat Wood — Tán âm nan gỗ','Membrane Tuned — Trap màng cộng hưởng','Cloud Wood Frame — Cloud viền gỗ','Poly Binary — Tán âm khối đa diện','PET Slim 40 — Tiêu âm polyester'];
+    const descsVi = ['Trap góc nhồi rockwool 80kg/m³, siết tiếng bass bùng ở góc phòng.','Tấm treo trần nhồi rockwool, dứt phản xạ trần ngay trên đầu bàn mix.','Diffuser skyline gỗ thông, phân tán âm 2 chiều giữ phòng sống động.','Trụ trap tròn 40cm, hút bass đa hướng, đặt linh hoạt mọi góc.','Tấm treo trần lục giác ghép tổ ong, vừa tiêu âm vừa làm điểm nhấn trần.','Tán âm QRD 1 chiều 7 giếng, trải phản xạ theo phương ngang chuẩn.','Panel khung gỗ nhồi rockwool, bọc nỉ — hấp thụ sâu, thẩm mỹ studio.','Trap góc đặc nguyên khối rockwool 100kg/m³, xử lý bass cực sâu.','Baffle treo dọc dưới trần, hấp thụ hai mặt cho không gian trần cao.','Vách nan gỗ trên nền nỉ tiêu âm — vừa tán, vừa hút nhẹ, đẹp như nội thất.','Trap màng cộng hưởng tinh chỉnh đúng tần số mode phòng, xử lý chọn lọc.','Cloud viền gỗ cao cấp, hấp thụ sâu cho phòng nghe và phòng thu đẹp.','Diffuser khối đa diện trải phản xạ rộng dải, nhẹ và dễ treo.','Tấm polyester PET không bụi, mỏng gọn, an toàn cho phòng kín đông người.'];
+    const namesEn = ['Corner Tri — Triangular corner trap','Cloud Rect 120 — Rectangular cloud','Skyline QRD — 2D diffuser','Column Round — Cylindrical trap','Cloud Hexa — Hexagonal cloud','QRD Well 7 — 1D well diffuser','Acoustic Panel 60 — Fabric-wrapped','Superchunk — Solid corner trap','Cloud Baffle — Vertical ceiling baffle','Slat Wood — Slatted wood diffuser','Membrane Tuned — Tuned membrane trap','Cloud Wood Frame — Wood-framed cloud','Poly Binary — Polyhedral diffuser','PET Slim 40 — Polyester absorber'];
+    const descsEn = ['Corner trap filled with 80kg/m³ rockwool — tightens boomy bass in room corners.','Suspended rockwool panel that stops ceiling reflections above the mix position.','Pine skyline diffuser scattering sound in two dimensions to keep the room alive.','40cm cylindrical trap absorbing bass omnidirectionally — flexible placement.','Honeycomb hexagonal ceiling tiles — absorption and a ceiling statement in one.','1D QRD diffuser with 7 wells, spreading reflections evenly across the horizontal plane.','Timber-framed rockwool panel wrapped in fabric — deep absorption, studio aesthetics.','Solid 100kg/m³ rockwool corner chunk for the deepest bass control.','Vertical baffles hung below the ceiling — double-sided absorption for tall rooms.','Wood slats over an absorbent felt core — scatters and absorbs, looks like furniture.','Membrane trap tuned to your room’s exact mode frequencies — surgical treatment.','Premium wood-framed cloud with deep absorption for beautiful rooms.','Lightweight polyhedral diffuser spreading reflections across a wide band.','Dust-free PET polyester panel — slim, safe for crowded enclosed rooms.'];
+    const catVi = { 'tieu-am': 'Tiêu âm', 'tan-am': 'Tán âm', 'bass-trap': 'Trap', 'ceiling-cloud': 'Ceiling Cloud' };
+    const catEn = { 'tieu-am': 'Absorption', 'tan-am': 'Diffusion', 'bass-trap': 'Bass Trap', 'ceiling-cloud': 'Ceiling Cloud' };
+    const en = { navProducts: 'Products', navProjects: 'Projects', navProcess: 'Process', navContact: 'Contact', navCta: 'Message us',
+      eyebrow: 'Catalogue', title: 'Acoustic treatment,', titleAccent: 'engineered.', sub: 'Every product ships with real specs: NRC rating, frequency range, dimensions and materials. Filter by family below.',
+      all: 'All', priceOnRequest: 'Price on request', details: 'Details →',
+      ctaTitle: 'Not sure what your', ctaTitleAccent: 'room needs?', ctaSub: 'Send us a few photos — we’ll recommend the right mix of absorption, diffusion and trapping, free of charge.' };
+    const vi = { navProducts: 'Sản phẩm', navProjects: 'Dự án', navProcess: 'Quy trình', navContact: 'Liên hệ', navCta: 'Nhắn Zalo',
+      eyebrow: 'Danh mục', title: 'Sản phẩm', titleAccent: 'xử lý âm học.', sub: 'Mỗi sản phẩm kèm thông số thật: NRC, dải tần, kích thước, vật liệu. Chọn theo nhóm bên dưới.',
+      all: 'Tất cả', priceOnRequest: 'Giá liên hệ', details: 'Chi tiết →',
+      ctaTitle: 'Chưa biết phòng bạn', ctaTitleAccent: 'cần gì?', ctaSub: 'Gửi vài tấm ảnh phòng — chúng tôi đề xuất tổ hợp tiêu âm, tán âm, trap phù hợp, hoàn toàn miễn phí.' };
+    const t = lang === 'vi' ? vi : en;
+    const cats = lang === 'vi' ? catVi : catEn;
+    const names = lang === 'vi' ? namesVi : namesEn;
+    const descs = lang === 'vi' ? descsVi : descsEn;
+    const all = base.map((p, i) => ({ ...p, name: names[i], desc: descs[i], cat: cats[p.key] }));
+    const filter = this.state.filter;
+    const shown = (filter === 'all' ? all : all.filter(p => p.key === filter)).map((p, i) => ({ ...p, delay: (i * 0.05).toFixed(2) + 's' }));
+    const filterDefs = [['all', t.all], ['tieu-am', cats['tieu-am']], ['tan-am', cats['tan-am']], ['bass-trap', cats['bass-trap']], ['ceiling-cloud', cats['ceiling-cloud']]];
+    return {
+      t,
+      otherLangLabel: lang === 'vi' ? 'EN' : 'VI',
+      toggleLang: () => {
+        const next = lang === 'vi' ? 'en' : 'vi';
+        try { localStorage.setItem('dt-lang', next); } catch (e) {}
+        this.setState({ lang: next });
+      },
+      filters: filterDefs.map(([key, label]) => ({
+        label, count: key === 'all' ? all.length : all.filter(p => p.key === key).length,
+        border: filter === key ? '#c9a96a' : 'transparent',
+        color: filter === key ? '#c9a96a' : '#cfc9bd',
+        set: () => this.setState({ filter: key })
+      })),
+      products: shown
+    };
+  }
+}
+</script>
+</body>
+</html>
