@@ -79,6 +79,112 @@
   color: var(--bg);
 }
 
+/* ---------- Mobile menu ---------- */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin-right: -10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburgerLine {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.menuOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(10, 10, 11, 0.97);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 32px 0;
+  overflow-y: auto;
+}
+
+.menuTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menuClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin-right: -10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 26px;
+  line-height: 1;
+  color: var(--text-nav);
+  transition: color 0.3s;
+}
+
+.menuClose:hover {
+  color: var(--gold);
+}
+
+.menuLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 64px;
+}
+
+.menuLink {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 8vw, 36px);
+  color: #f2eee6;
+}
+
+.menuLinkActive {
+  color: var(--gold);
+}
+
+.menuIndex {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--faint);
+  font-weight: 500;
+}
+
+.menuBottom {
+  margin-top: auto;
+  padding: 48px 0;
+  display: flex;
+  gap: 16px;
+}
+
+.menuBottomBtn {
+  flex: 1;
+  text-align: center;
+  padding: 14px 24px;
+}
+
 /* ---------- Footer (home, 3-column) ---------- */
 
 .footerHome {
@@ -112,6 +218,7 @@
 
 .footerBtns {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   margin-top: 8px;
 }
@@ -174,6 +281,9 @@
   margin: 64px auto 0;
   border-top: 1px solid var(--hairline);
   padding-top: 28px;
+  /* Right clearance so the fixed back-to-top button never overlaps the
+     domain link when scrolled to the page bottom. */
+  padding-right: 64px;
   display: flex;
   justify-content: space-between;
   font-size: 12px;
@@ -213,4 +323,68 @@
 .backToTop:hover {
   border-color: var(--gold);
   color: var(--gold);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1024px) {
+  .nav {
+    padding: 16px 32px;
+  }
+
+  .links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .footerHomeGrid {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 900px) {
+  .footerHomeGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footerBrand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .backToTop {
+    width: 44px;
+    height: 44px;
+    right: 16px;
+    bottom: 16px;
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 560px) {
+  .nav {
+    padding: 14px 20px;
+  }
+
+  .menuOverlay {
+    padding: 20px 20px 0;
+  }
+
+  .footerHome {
+    padding: 64px 20px 40px;
+  }
+
+  .footerHomeGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footerBottom {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 }

@@ -3,22 +3,22 @@ import type { Lang } from "@/lib/i18n";
 /** Projects page copy — source of truth: design_handoff_detreat_site/"Du An.dc.html" */
 export const PROJECTS_COPY = {
   en: {
-    title: "Spaces we have",
+    title: "Spaces we\u00A0have",
     titleAccent: "treated.",
-    sub: "A selection of finished rooms — home studios, podcast rooms, Hi-Fi listening rooms, DJ booths and commercial studios. Click any photo to enlarge.",
+    sub: "A selection of finished rooms — home studios, podcast rooms, Hi‑Fi listening rooms, DJ\u00A0booths and commercial studios. Click any photo to\u00A0enlarge.",
     spaces: "Photos",
-    ctaTitle: "Want your room to",
-    ctaTitleAccent: "sound like this?",
+    ctaTitle: "Want your room\u00A0to",
+    ctaTitleAccent: "sound like\u00A0this?",
     ctaBtn: "Get a free consultation",
   },
   vi: {
-    title: "Những không gian",
-    titleAccent: "đã hoàn thiện.",
-    sub: "Một số không gian De-treat đã thi công — home studio, podcast, phòng nghe Hi-Fi, DJ booth và phòng thu thương mại. Bấm vào ảnh để phóng to.",
-    spaces: "Hình ảnh",
-    ctaTitle: "Muốn phòng của bạn",
-    ctaTitleAccent: "nghe như thế này?",
-    ctaBtn: "Nhận tư vấn miễn phí",
+    title: "Những không\u00A0gian",
+    titleAccent: "đã hoàn\u00A0thiện.",
+    sub: "Một số không gian De-treat đã thi công — home studio, podcast, phòng nghe Hi‑Fi, DJ\u00A0booth và phòng thu thương mại. Bấm vào ảnh để phóng\u00A0to.",
+    spaces: "Hình\u00A0ảnh",
+    ctaTitle: "Muốn phòng của\u00A0bạn",
+    ctaTitleAccent: "nghe như thế\u00A0này?",
+    ctaBtn: "Nhận tư\u00A0vấn miễn\u00A0phí",
   },
 } satisfies Record<Lang, Record<string, string>>;
 
